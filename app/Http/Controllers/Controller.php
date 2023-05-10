@@ -1,7 +1,7 @@
 <?php
 
 //Azzam was here jsegkjsdnerkgjn
-//rfiqiii ardaniii
+//rifqi ardaniii
 
 namespace App\Http\Controllers;
 

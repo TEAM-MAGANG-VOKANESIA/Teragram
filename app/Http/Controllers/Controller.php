@@ -1,6 +1,6 @@
 <?php
 
-//Azzam was here jsegkjsdnerkgjn
+// Ryzzz
 
 namespace App\Http\Controllers;
 

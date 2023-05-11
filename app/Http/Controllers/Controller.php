@@ -1,7 +1,13 @@
 <?php
 
+//feature-agatha
 // Hello my name is Agatha and intership at Vokanesia
+//Azzam was here jsegkjsdnerkgjn
+//feature-rifqi
+//rifqi ardanigywefyuebv
+//hewes hewes bablas
 
+main
 namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;

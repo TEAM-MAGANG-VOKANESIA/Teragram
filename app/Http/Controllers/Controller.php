@@ -1,7 +1,7 @@
 <?php
 
 //Azzam was here jsegkjsdnerkgjn
-
+//hewes hewes bablas
 namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;

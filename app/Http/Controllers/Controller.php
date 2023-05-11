@@ -2,6 +2,11 @@
 
 //Azzam was here jsegkjsdnerkgjn
 //Naufal
+//Fitra was here
+//feature-rifqi
+//rifqi ardanigywefyuebv
+//hewes hewes bablas
+
 namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;

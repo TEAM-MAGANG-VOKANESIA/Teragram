@@ -2,12 +2,16 @@
 
 //feature-agatha
 // Hello my name is Agatha and intership at Vokanesia
+//My Name is Zidani
+// Ryzzz
 //Azzam was here jsegkjsdnerkgjn
+//Rifqi was here
+//Naufal
+//Fitra was here
 //feature-rifqi
 //rifqi ardanigywefyuebv
 //hewes hewes bablas
 
-main
 namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;

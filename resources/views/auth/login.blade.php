@@ -82,7 +82,6 @@
         </div>
 
         {{-- LOGO GOOGLE PLAY & MICROSOFT --}}
-        {{-- BELUM JADI --}}
 </body>
 
 </html>

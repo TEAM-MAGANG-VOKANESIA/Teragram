@@ -81,7 +81,7 @@
             <h1 class="text-medium text-sm">Dapatkan Aplikasi</h1>
         </div>
 
-        {{-- LOGO GOOGLE PLAY & MICROSOFT --}}
+        {{-- LOGO GOOGLE PLAY & MICROSOFTt --}}
 </body>
 
 </html>

@@ -6,6 +6,11 @@
 // Ryzzz
 //Azzam was here jsegkjsdnerkgjn
 //Rifqi was here
+//Naufal
+//Fitra was here
+//feature-rifqi
+//rifqi ardanigywefyuebv
+//hewes hewes bablas
 
 namespace App\Http\Controllers;
 

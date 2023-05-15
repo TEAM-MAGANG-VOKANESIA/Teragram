@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HalamanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('auth.login');
+// });
+
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login-proses', [LoginController::class, 'login_proses']);
+
+Route::get('halaman', [HalamanController::class, 'portfolio']);

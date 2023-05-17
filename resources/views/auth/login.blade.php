@@ -10,7 +10,7 @@
     <script src="https://kit.fontawesome.com/58956920f1.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="bg-gray-100 mt-16">
     <div class="h-screen bg-gray-100 flex flex-col justify-center items-center">
         <div class="bg-white mb-3 border border-gray-300 w-80 pt-8 pb-4 flex flex-col items-center">
             <img src="teragram.png" width="150px" height="150px" alt="teragram">
@@ -52,7 +52,7 @@
                             focus:text-gray-500 rounded text-sm font-semibold">show</button>
                 </div>
 
-        {{-- LOGIN TERAGRAM --}}
+                {{-- LOGIN TERAGRAM --}}
                 <a href=""
                     class="mt-2 text-sm text-center bg-blue-600 hover:bg-blue-400 text-white py-1 rounded-lg font-medium">Login</a>
                 <div class="inline-flex items-center justify-center w-full">
@@ -61,11 +61,11 @@
                         class="absolute px-3 font-medium text-xs text-gray-500 -translate-x-1/2 bg-white left-1/2">OR</span>
                 </div>
 
-        {{-- LOGIN WITH FACEBOOK --}}
-                <a href="#" class="text-xs font-medium text-blue-600 ml-2 text-center"><i class="fa-brands fa-facebook mr-1"
-                        style="color: #0c5ddf;"></i>Login With Facebook</a>
+                {{-- LOGIN WITH FACEBOOK --}}
+                <a href="#" class="text-xs font-medium text-blue-800 ml-2 text-center"><i
+                        class="fa-brands fa-square-facebook" style="color: #153e84;"></i>Login With Facebook</a>
 
-        {{-- FORGOT PASSWORD --}}
+                {{-- FORGOT PASSWORD --}}
                 <div class="mt-3 text-center">
                     <a href="#" class="text-gray-950 text-xs text-center">Forgot Password?</a>
                 </div>
@@ -80,8 +80,94 @@
         <div class="flex flex-col items center mt-4">
             <h1 class="text-medium text-sm">Dapatkan Aplikasi</h1>
         </div>
-
         {{-- LOGO GOOGLE PLAY & MICROSOFTt --}}
+        <div class="inline flex-wrap mt-4">
+            <img src="logostore.png" width="300" height="300" alt="logostore" />
+        </div>
+
+        {{-- FOOTER --}}
+        <div class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+            <nav class="flex flex-wrap justify-center">
+                <div class="px-5 py-2">
+                    <a href="#" class="text-xs leading-6 text-gray-500 hover:text-gray-900">
+                        Meta
+                    </a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="#" class="text-xs leading-6 text-gray-500 hover:text-gray-900">
+                        About
+                    </a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="#" class="text-xs leading-6 text-gray-500 hover:text-gray-900">
+                        Blog
+                    </a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="#" class="text-xs leading-6 text-gray-500 hover:text-gray-900">
+                        Jobs
+                    </a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="#" class="text-xs leading-6 text-gray-500 hover:text-gray-900">
+                        Help
+                    </a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="#" class="text-xs leading-6 text-gray-500 hover:text-gray-900">
+                        API
+                    </a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="#" class="text-xs leading-6 text-gray-500 hover:text-gray-900">
+                        Privacy
+                    </a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="#" class="text-xs leading-6 text-gray-500 hover:text-gray-900">
+                        Terms
+                    </a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="#" class="text-xs leading-6 text-gray-500 hover:text-gray-900">
+                        Top Accounts
+                    </a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="#" class="text-xs leading-6 text-gray-500 hover:text-gray-900">
+                        Locations
+                    </a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="#" class="text-xs leading-6 text-gray-500 hover:text-gray-900">
+                        Instagram Lite
+                    </a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="#" class="text-xs leading-6 text-gray-500 hover:text-gray-900">
+                        Contact Uploading & Non-Users
+                    </a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="#" class="text-xs leading-6 text-gray-500 hover:text-gray-900">
+                        Meta Verified
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+        <div class="-mt-12 -ml-12 p-12 lg:sticky lg:top-4 lg:col-start-2">
+        <select id="countries" class="text-xs bg-gray-100">
+            <option selected>Choose a language</option>
+            <option value="US">United States</option>
+            <option value="CA">Canada</option>
+            <option value="FR">France</option>
+            <option value="DE">Germany</option>
+        </select>
+        <span class="text-xs bg-gray-100">© 2023 Instagram from Meta</span>
+        </div>
+    </div>
+
 </body>
 
 </html>

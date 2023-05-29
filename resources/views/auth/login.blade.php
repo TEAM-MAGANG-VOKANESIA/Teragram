@@ -13,12 +13,13 @@
 <body>
     <div class="h-screen bg-gray-100 flex flex-col justify-center items-center">
         <div class="bg-white mb-3 border border-gray-300 w-80 pt-8 pb-4 flex flex-col items-center">
-            <img src="teragram.png" width="150px" height="150px" alt="teragram">
+            <img src="{{asset('assets/images/teragram.png')}}" width="150px" height="150px" alt="teragram">
 
             {{-- ADD EMAIL & PASSWORD FOR LOGIN TERAGRAM --}}
-            <form class="w-64 flex flex-col gap-1 mt-8">
+            <form class="w-64 flex flex-col gap-1 mt-8" method="post" action="{{route('login.post')}}">
+                @csrf
                 <div class="relative">
-                    <input type="text" class="peer w-full border bg-gray-100 p-2 text-xs placeholder-transparent"
+                    <input type="text" name="email" class="peer w-full border bg-gray-100 p-2 text-xs placeholder-transparent"
                         placeholder="Phone Number, username or email">
                     <label
                         class="absolute
@@ -33,7 +34,7 @@
                         Number, username or email</label>
                 </div>
                 <div class="relative">
-                    <input type="password" class="peer w-full border bg-gray-100 p-2 text-xs placeholder-transparent"
+                    <input type="password" name="password" class="peer w-full border bg-gray-100 p-2 text-xs placeholder-transparent"
                         placeholder="Password">
                     <label
                         class="absolute

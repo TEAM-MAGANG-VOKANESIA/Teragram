@@ -54,8 +54,7 @@
                 </div>
 
         {{-- LOGIN TERAGRAM --}}
-                <a href=""
-                    class="mt-2 text-sm text-center bg-blue-600 hover:bg-blue-400 text-white py-1 rounded-lg font-medium">Login</a>
+                <button class="mt-2 text-sm text-center bg-blue-600 hover:bg-blue-400 text-white py-1 rounded-lg font-medium">Login</button>
                 <div class="inline-flex items-center justify-center w-full">
                     <hr class="w-64 h-px my-5 bg-gray-200 border-0 dark:bg-gray-500">
                     <span

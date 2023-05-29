@@ -13,13 +13,14 @@
 <body>
     <div class="h-screen bg-gray-100 flex flex-col justify-center items-center">
         <div class="bg-white mb-3 border border-gray-300 w-80 pt-8 pb-4 flex flex-col items-center">
-            <img src="{{asset('assets/images/teragram.png')}}" width="150px" height="150px" alt="teragram">
+            <img src="{{ asset('assets/images/teragram.png') }}" width="150px" height="150px" alt="teragram">
 
             {{-- ADD EMAIL & PASSWORD FOR LOGIN TERAGRAM --}}
-            <form class="w-64 flex flex-col gap-1 mt-8" method="post" action="{{route('login.post')}}">
+            <form class="w-64 flex flex-col gap-1 mt-8" method="post" action="{{ route('login.post') }}">
                 @csrf
                 <div class="relative">
-                    <input type="text" name="email" class="peer w-full border bg-gray-100 p-2 text-xs placeholder-transparent"
+                    <input type="text" name="email"
+                        class="peer w-full border bg-gray-100 p-2 text-xs placeholder-transparent"
                         placeholder="Phone Number, username or email">
                     <label
                         class="absolute
@@ -34,7 +35,8 @@
                         Number, username or email</label>
                 </div>
                 <div class="relative">
-                    <input type="password" name="password" class="peer w-full border bg-gray-100 p-2 text-xs placeholder-transparent"
+                    <input type="password" name="password"
+                        class="peer w-full border bg-gray-100 p-2 text-xs placeholder-transparent"
                         placeholder="Password">
                     <label
                         class="absolute
@@ -46,26 +48,22 @@
                             peer-placeholder-shown:text-xs
                             peer-placeholder-shown:top-2
                             pointer-events-none">Password</label>
-                    <button
-                        class="absolute
-                            right-2
-                            bottom-2
-                            focus:text-gray-500 rounded text-sm font-semibold">show</button>
                 </div>
 
-        {{-- LOGIN TERAGRAM --}}
-                <button class="mt-2 text-sm text-center bg-blue-600 hover:bg-blue-400 text-white py-1 rounded-lg font-medium">Login</button>
+                {{-- LOGIN TERAGRAM --}}
+                <button
+                    class="mt-2 text-sm text-center bg-blue-600 hover:bg-blue-400 text-white py-1 rounded-lg font-medium">Login</button>
                 <div class="inline-flex items-center justify-center w-full">
                     <hr class="w-64 h-px my-5 bg-gray-200 border-0 dark:bg-gray-500">
                     <span
                         class="absolute px-3 font-medium text-xs text-gray-500 -translate-x-1/2 bg-white left-1/2">OR</span>
                 </div>
 
-        {{-- LOGIN WITH FACEBOOK --}}
-                <a href="#" class="text-xs font-medium text-blue-600 ml-2 text-center"><i class="fa-brands fa-facebook mr-1"
-                        style="color: #0c5ddf;"></i>Login With Facebook</a>
+                {{-- LOGIN WITH FACEBOOK --}}
+                <a href="#" class="text-xs font-medium text-blue-600 ml-2 text-center"><i
+                        class="fa-brands fa-facebook mr-1" style="color: #0c5ddf;"></i>Login With Facebook</a>
 
-        {{-- FORGOT PASSWORD --}}
+                {{-- FORGOT PASSWORD --}}
                 <div class="mt-3 text-center">
                     <a href="#" class="text-gray-950 text-xs text-center">Forgot Password?</a>
                 </div>
@@ -81,7 +79,7 @@
             <h1 class="text-medium text-sm">Dapatkan Aplikasi</h1>
         </div>
 
-        {{-- LOGO GOOGLE PLAY & MICROSOFTt --}}
+        {{-- LOGO GOOGLE PLAY & MICROSOFT --}}
 </body>
 
 </html>

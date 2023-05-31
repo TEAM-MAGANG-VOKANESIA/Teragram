@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,5 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(LoginController::class)->group(function () {
     Route::get('/', 'loginIndex')->name('');
+    Route::post('/login/store', 'loginStore')->name('login.post');
+});
+
+Route::controller(RegisterController::class)->group(function () {
+    Route::get('register', 'registerIndex')->name('');
     Route::post('/login/store', 'loginStore')->name('login.post');
 });

@@ -17,9 +17,14 @@
 
             {{-- ADD EMAIL & PASSWORD FOR LOGIN TERAGRAM --}}
             <form class="w-64 flex flex-col gap-1 mt-8" method="post" action="{{ route('login.post') }}">
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <p class="text-center text-red-700">{{ $error }}</p>
+                    @endforeach
+                @endif
                 @csrf
                 <div class="relative">
-                    <input type="text" name="email"
+                    <input type="text" name="email" value="{{ old('email') }}"
                         class="peer w-full border bg-gray-100 p-2 text-xs placeholder-transparent"
                         placeholder="Phone Number, username or email">
                     <label

@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\SignupController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +20,11 @@ Route::controller(LoginController::class)->group(function () {
     Route::post('/login/store', 'loginStore')->name('login.post');
 });
 
-Route::controller(RegisterController::class)->group(function () {
-    Route::get('register', 'registerIndex')->name('');
-    Route::post('/login/store', 'loginStore')->name('login.post');
+Route::controller(SignupController::class)->group(function () {
+    Route::get('/signup', 'index')->name('signup.index');
+    Route::post('/signup', 'create')->name('signup.post');
+});
+
+Route::get('home', function () {
+    return view('landing.homepage.index');
 });

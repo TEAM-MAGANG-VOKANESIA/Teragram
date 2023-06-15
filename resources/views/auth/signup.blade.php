@@ -50,7 +50,7 @@
                         <x-slot:type>password</x-slot>
                         <x-slot:old>password</x-slot>
                     </x-auth.form-component>
-                    @error('name')
+                    @error('password')
                         <p class="text-rose-600 text-xs">{{ $message }}</p>
                     @enderror
                 </div>

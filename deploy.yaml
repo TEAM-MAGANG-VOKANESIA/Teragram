@@ -1,20 +1,18 @@
-import: 
+import:
   - recipe/laravel.php
-  - contrib/npm.php
 
 config:
-  repository: 'git@github.com/TEAM-MAGANG-VOKANESIA/Teragram.git'
-  writable_mode: chmod
-  remote_user: deployer
+  repository: "https://github.com/TEAM-MAGANG-VOKANESIA/Teragram.git"
+  remote_user: latihanvis
 
 hosts:
-  dev:
-    hostname: latihan.vistech.co.id   
-    deploy_path: '~/Teragram'
+  latihan.vistech.co.id:
+    deploy_path: "~/Teragram"
+
 tasks:
   build:
-    - cd: '{{release_path}}'
-    - run: 'npm run build'
+    - cd: "{{release_path}}"
+    - run: "npm run build"
 
 after:
   deploy:failed: deploy:unlock

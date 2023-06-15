@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -16,16 +17,23 @@ class LoginController extends Controller
     public function loginStore(Request $request)
     {
         $credentials = $request->only('email', 'password');
-        $request->validate([
-            'email' => 'required|exists:users|email',
+        
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|exists:users',
             'password' => 'required',
         ], [
-            'email.exists' => 'E-mail does not exist',
+            'email.required' => "Email cannot be empty.",
+            'email.exists' => "These credentials do not match our records.",
+            'email.email' => 'Invalid e-mail format.',
+            'password.required' => "Password cannot be empty.",
         ]);
-        if (Auth::attempt($credentials)) {
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        } elseif (Auth::attempt($credentials)) {
             return 'Ini Halaman Home';
         } else {
-            return redirect()->back()->withInput();
+            return redirect()->back()->withErrors(['password' => 'Password wrong.'])->withInput();
         }
     }
 }

@@ -4,6 +4,7 @@ import:
 config:
   repository: "https://github.com/TEAM-MAGANG-VOKANESIA/Teragram.git"
   remote_user: latihanvis
+  writable_mode: chmod
 
 hosts:
   latihan.vistech.co.id:

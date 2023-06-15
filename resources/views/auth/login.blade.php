@@ -17,44 +17,27 @@
 
             {{-- ADD EMAIL & PASSWORD FOR LOGIN TERAGRAM --}}
             <form class="w-64 flex flex-col gap-1 mt-8" method="post" action="{{ route('login.post') }}">
-                @if ($errors->any())
-                    @foreach ($errors->all() as $error)
-                        <p class="text-center text-red-700">{{ $error }}</p>
-                    @endforeach
-                @endif
                 @csrf
-                <div class="relative">
-                    <input type="text" name="email" value="{{ old('email') }}"
-                        class="peer w-full border bg-gray-100 p-2 text-xs placeholder-transparent"
-                        placeholder="Phone Number, username or email">
-                    <label
-                        class="absolute
-                            transition-all
-                            left-2
-                            top-0
-                            text-gray-400
-                            text-xxs
-                            peer-placeholder-shown:text-xs
-                            peer-placeholder-shown:top-2
-                            pointer-events-none">Phone
-                        Number, username or email</label>
-                </div>
-                <div class="relative">
-                    <input type="password" name="password"
-                        class="peer w-full border bg-gray-100 p-2 text-xs placeholder-transparent"
-                        placeholder="Password">
-                    <label
-                        class="absolute
-                            transition-all
-                            left-2
-                            top-0
-                            text-gray-400
-                            text-xxs
-                            peer-placeholder-shown:text-xs
-                            peer-placeholder-shown:top-2
-                            pointer-events-none">Password</label>
-                </div>
-
+                <x-auth.form-component>
+                    <x-slot:name>email</x-slot>
+                    <x-slot:placeholder>Phone Number, username or email</x-slot>
+                    <x-slot:error>email</x-slot>
+                    <x-slot:type>email</x-slot>
+                    <x-slot:old>email</x-slot>
+                </x-auth.form-component>
+                @error('email')
+                    <p class="text-rose-600 text-xs">{{ $message }}</p>
+                @enderror
+                <x-auth.form-component>
+                    <x-slot:name>password</x-slot>
+                    <x-slot:placeholder>Password</x-slot>
+                    <x-slot:error>password</x-slot>
+                    <x-slot:type>password</x-slot>
+                    <x-slot:old>password</x-slot>
+                </x-auth.form-component>
+                @error('password')
+                    <p class="text-rose-600 text-xs">{{ $message }}</p>
+                @enderror
                 {{-- LOGIN TERAGRAM --}}
                 <button
                     class="mt-2 text-sm text-center bg-blue-600 hover:bg-blue-400 text-white py-1 rounded-lg font-medium">Login</button>
@@ -77,7 +60,7 @@
         {{-- CREATE ACCOUNT --}}
         <div class="bg-white border border-gray-300 w-80 h-4 pt-6 pb-8 flex flex-col items-center">
             <h1 class="text-center text-xs font-medium mb-2">
-                Tidak Punya Akun?<a href="#" class="text-xs font-medium text-blue-700 ml-1 mb-2">Buat Akun</a>
+                Tidak Punya Akun?<a href="signup" class="text-xs font-medium text-blue-700 ml-1 mb-2">Buat Akun</a>
             </h1>
         </div>
         <div class="flex flex-col items center mt-4">

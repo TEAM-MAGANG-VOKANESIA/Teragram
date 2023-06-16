@@ -22,7 +22,7 @@ Route::controller(LoginController::class)->group(function () {
 
 Route::controller(SignupController::class)->group(function () {
     Route::get('/signup', 'index')->name('signup.index');
-    Route::post('/signup', 'create')->name('signup.post');
+    Route::post('/signup/post', 'create')->name('signup.post');
 });
 
 Route::get('home', function () {

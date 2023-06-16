@@ -17,7 +17,6 @@
     
             {{-- ADD EMAIL & PASSWORD FOR LOGIN TERAGRAM --}}
             <form class="w-64 flex flex-col gap-1 mt-8" method="post" action="{{ route("$routeName") }}">
-                @csrf
                 {{$slot}}
                 {{-- LOGIN TERAGRAM --}}
                 <button

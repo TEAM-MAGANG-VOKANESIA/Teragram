@@ -1,4 +1,5 @@
 <x-auth.form-layout>
+    @csrf
     <x-slot:routeName>
         signup.post
     </x-slot:routeName>

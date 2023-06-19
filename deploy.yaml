@@ -1,6 +1,5 @@
 import:
   - recipe/laravel.php
-  - contrib/npm.php
 
 config:
   repository: "https://github.com/TEAM-MAGANG-VOKANESIA/Teragram.git"
@@ -12,16 +11,9 @@ hosts:
     deploy_path: "~/Teragram"
 
 tasks:
-  deploy:
-    - deploy:prepare
-    - deploy:vendors
-    - artisan:storage:link
-    - npm:install
-    - npm:run:prod
-    - artisan:migrate
-    - deploy:publish
-  npm:run:prod:
-    - run: 'cd {{release_path}} && npm run prod'
+  build:
+    - cd: "{{release_path}}"
+    - run: "npm run build"
 
 after:
   deploy:failed: deploy:unlock

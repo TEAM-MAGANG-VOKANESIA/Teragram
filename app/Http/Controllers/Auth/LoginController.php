@@ -31,7 +31,7 @@ class LoginController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         } elseif (Auth::attempt($credentials)) {
-            return redirect('home');
+            return redirect('/');
         } else {
             return redirect()->back()->withErrors(['password' => 'Password wrong.'])->withInput();
         }

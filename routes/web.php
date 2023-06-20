@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\SignupController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::controller(LoginController::class)->group(function () {
-    Route::get('/', 'loginIndex')->name('');
+    Route::get('/login', 'loginIndex')->name('login.index');
     Route::post('/login/store', 'loginStore')->name('login.post');
 });
 
@@ -25,6 +26,11 @@ Route::controller(SignupController::class)->group(function () {
     Route::post('/signup/post', 'create')->name('signup.post');
 });
 
-Route::get('home', function () {
+Route::get('/', function () {
     return view('landing.homepage.index');
-});
+})->middleware('auth');
+
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect('/login');
+})->middleware('auth');

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\landing\homepage;
+namespace App\View\Components\landing;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class app extends Component
+class App extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class app extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.landing.homepage.app');
+        return view('components.landing.app');
     }
 }

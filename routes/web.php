@@ -27,7 +27,7 @@ Route::controller(SignupController::class)->group(function () {
 });
 
 Route::get('/', function () {
-    return view('landing.homepage.index');
+    return view('landing.index');
 })->middleware('auth');
 
 Route::get('/logout', function () {

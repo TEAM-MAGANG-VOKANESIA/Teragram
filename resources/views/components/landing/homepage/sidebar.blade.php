@@ -1,6 +1,6 @@
-<div class="flex border">
+<div class="flex">
     {{-- Sidebar --}}
-    <div class="w-1/4 h-screen border-r-2 border-gray-200 hidden md:block">
+    <div class="w-1/4 h-screen border-r-2 border-gray-200 hidden md:block sticky top-0">
         {{-- Logo --}}
         <div class="mt-3">
             <img src="{{ asset('assets/images/teragram.png') }}" alt="Logo Teragram" class="w-[160px] h-[80px] mx-auto">
@@ -91,7 +91,7 @@
     {{ $slot }}
 
     {{-- Sidebar --}}
-    <div class="w-1/4 h-screen border-l-2 border-gray-200 flex flex-col items-center hidden md:block">
+    <div class="w-1/4 h-screen border-l-2 border-gray-200 flex flex-col items-center hidden md:block sticky top-0">
         {{-- Menu --}}
         <div class="flex justify-center space-x-4 mt-6 mb-4">
             <div class="border p-3 rounded-full shadow-md">

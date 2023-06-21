@@ -19,7 +19,7 @@
                     <a href="/" class="md:hidden">
                         <img class="w-[90px]" src="{{ asset('assets/images/teragram.png') }}" alt="Logo Teragram">
                     </a>
-                    <input type="text" class="border p-2 rounded-lg shadow-md" placeholder="Search">
+                    <input type="text" class="border p-2 rounded-lg shadow-md hidden md:block" placeholder="Search">
                     <div class="flex items-center border p-2 rounded-full shadow-md hidden md:flex">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
@@ -36,7 +36,7 @@
                     </div>
                 </div>
             </nav>
-            <div class="p-8">
+            <div class="p-6">
                 {{-- Stories --}}
                 <div class="mb-6">
                     <div class="flex justify-between items-center mb-6">
@@ -50,7 +50,7 @@
                             </svg>
                         </div>
                     </div>
-                    <div class="flex space-x-8 text-center">
+                    <div class="flex items-center space-x-5 text-center">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor"

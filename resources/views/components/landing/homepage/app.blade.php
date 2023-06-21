@@ -12,7 +12,7 @@
 <body>
     <x-landing.homepage.sidebar>
         {{-- Main Content --}}
-        <div class="md:w-5/6">
+        <div class="lg:w-5/6">
             {{-- Navbar --}}
             <nav class="p-4 border-b shadow-md border-gray-300">
                 <div class="flex items-center justify-between">

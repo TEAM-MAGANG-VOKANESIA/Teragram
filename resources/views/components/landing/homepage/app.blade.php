@@ -16,7 +16,7 @@
             {{-- Navbar --}}
             <nav class="p-4 border-b shadow-md border-gray-300">
                 <div class="flex items-center justify-between">
-                    <a href="/">
+                    <a href="/" class="md:hidden">
                         <img class="w-[90px]" src="{{ asset('assets/images/teragram.png') }}" alt="Logo Teragram">
                     </a>
                     <input type="text" class="border p-2 rounded-lg shadow-md" placeholder="Search">

@@ -36,7 +36,7 @@
                     </div>
                 </div>
             </nav>
-            <div class="p-8 bg-[#f2f2f2]">
+            <div class="p-8">
                 {{-- Stories --}}
                 <div class="mb-6">
                     <div class="flex justify-between items-center mb-6">

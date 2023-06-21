@@ -12,10 +12,13 @@
 <body>
     <x-landing.homepage.sidebar>
         {{-- Main Content --}}
-        <div class="md:w-5/6">
+        <div class="lg:w-5/6">
             {{-- Navbar --}}
             <nav class="p-4 border-b shadow-md border-gray-300">
                 <div class="flex items-center justify-between">
+                    <a href="/" class="md:hidden">
+                        <img class="w-[90px]" src="{{ asset('assets/images/teragram.png') }}" alt="Logo Teragram">
+                    </a>
                     <input type="text" class="border p-2 rounded-lg shadow-md" placeholder="Search">
                     <div class="flex items-center border p-2 rounded-full shadow-md hidden md:flex">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -33,7 +36,7 @@
                     </div>
                 </div>
             </nav>
-            <div class="p-8 bg-[#f2f2f2]}">
+            <div class="p-8">
                 {{-- Stories --}}
                 <div class="mb-6">
                     <div class="flex justify-between items-center mb-6">
@@ -64,7 +67,8 @@
                         </div>
                         <div>
                             <img class="w-16 h-16 mb-2 rounded-full object-cover border-2 border-[#ff00e5] shadow-xl"
-                                src="" alt="not found">
+                                src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Jamal_Edwards%2C_2019.png"
+                                alt="not found">
                             <p class="text-xs">JadenSmith</p>
                         </div>
                         <div>

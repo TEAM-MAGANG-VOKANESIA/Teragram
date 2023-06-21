@@ -1,9 +1,9 @@
 <div class="flex border">
     {{-- Sidebar --}}
-    <div class="w-1/4 h-screen border-r-2 border-gray-200 flex flex-col items-center">
+    <div class="w-1/4 h-screen border-r-2 border-gray-200 hidden md:block">
         {{-- Logo --}}
         <div class="mt-3">
-            <img src="{{ asset('assets/images/teragram.png') }}" alt="Logo Teragram" class="w-[160px] h-[80px]">
+            <img src="{{ asset('assets/images/teragram.png') }}" alt="Logo Teragram" class="w-[160px] h-[80px] mx-auto">
         </div>
 
         {{-- Profile --}}
@@ -17,7 +17,7 @@
         </div>
 
         {{-- Statistic --}}
-        <div class="flex text-xs text-center space-x-2 font-bold mt-5">
+        <div class="flex justify-center text-xs text-center space-x-2 font-bold mt-5">
             <div>
                 <div>3</div>
                 <div>POST</div>
@@ -35,7 +35,7 @@
         <hr class="w-full h-px my-5 bg-gray-300  dark:bg-gray-500">
 
         <div>
-            <ul class="text-xl space-y-4 p-5">
+            <ul class="text-xl space-y-4 p-9">
                 <li class="flex items-center space-x-4">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-6 h-6">
@@ -91,9 +91,9 @@
     {{ $slot }}
 
     {{-- Sidebar --}}
-    <div class="w-1/4 h-screen border-l-2 border-gray-200 flex flex-col items-center">
+    <div class="w-1/4 h-screen border-l-2 border-gray-200 flex flex-col items-center hidden md:block">
         {{-- Menu --}}
-        <div class="flex space-x-4 mt-6 mb-4">
+        <div class="flex justify-center space-x-4 mt-6 mb-4">
             <div class="border p-3 rounded-full shadow-md">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">
@@ -133,10 +133,9 @@
         </div>
 
         {{-- Suggestion Section --}}
-        <div>
+        <div class="p-4 mb-3">
             <h1 class="text-xl mb-3">Suggestion for you</h1>
-
-            <div class="space-y-3">
+            <div class="space-y-3 p-4">
                 {{-- Sugestion Profile --}}
                 <div class="flex items-center space-x-3">
                     <img class="rounded-full h-[50px] w-[50px] object-cover"

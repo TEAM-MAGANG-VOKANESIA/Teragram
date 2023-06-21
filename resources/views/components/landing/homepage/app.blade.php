@@ -36,7 +36,7 @@
                     </div>
                 </div>
             </nav>
-            <div class="p-8 bg-[#f2f2f2]}">
+            <div class="p-8 bg-[#f2f2f2]">
                 {{-- Stories --}}
                 <div class="mb-6">
                     <div class="flex justify-between items-center mb-6">
@@ -67,7 +67,8 @@
                         </div>
                         <div>
                             <img class="w-16 h-16 mb-2 rounded-full object-cover border-2 border-[#ff00e5] shadow-xl"
-                                src="" alt="not found">
+                                src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Jamal_Edwards%2C_2019.png"
+                                alt="not found">
                             <p class="text-xs">JadenSmith</p>
                         </div>
                         <div>

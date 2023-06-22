@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Validator;
 
 class SignupController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('auth.signup');
     }
     public function create(Request $request)
@@ -30,6 +31,6 @@ class SignupController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        return redirect('/');
+        return redirect('/login');
     }
 }

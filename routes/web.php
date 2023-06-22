@@ -21,16 +21,20 @@ Route::controller(LoginController::class)->group(function () {
     Route::post('/login/store', 'loginStore')->name('login.post');
 });
 
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect('/login');
+});
+
 Route::controller(SignupController::class)->group(function () {
     Route::get('/signup', 'index')->name('signup.index');
     Route::post('/signup/post', 'create')->name('signup.post');
 });
 
 Route::get('/', function () {
-    return view('landing.homepage.index');
+    return view('landing.index');
 })->middleware('auth');
 
-Route::get('/logout', function () {
-    Auth::logout();
-    return redirect('/login');
+Route::get('/explore', function () {
+    return view('landing.explore');
 })->middleware('auth');

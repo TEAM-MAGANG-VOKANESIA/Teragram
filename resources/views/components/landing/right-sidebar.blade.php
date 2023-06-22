@@ -25,24 +25,28 @@
     </div>
 
     {{-- Trending Section --}}
-    <div class="p-4 mb-3">
-        <h1 class="text-xl mb-4">Trending Feeds</h1>
-        <div class="grid grid-rows-2 grid-flow-col gap-1 flex justify-center">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHsFfe-vd1jIp0Wl2M_9-y6NQeeS19t3Ca_g&usqp=CAU"
-                class="w-[80px] h-[80px] object-cover border" alt="post">
-            <img src="https://wiki.warthunder.com/images/thumb/c/cb/ArtImage_M24.png/800px-ArtImage_M24.png"
-                class="w-[80px] h-[80px] object-cover border" alt="post">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFExwfzM2dZykLGL2-4G6_yl1z9u1uoo8rYw&usqp=CAU"
-                class="w-[80px] h-[80px] object-cover border" alt="post">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFExwfzM2dZykLGL2-4G6_yl1z9u1uoo8rYw&usqp=CAU"
-                class="w-[80px] h-[80px] object-cover border" alt="post">
+    <div class="p-4 flex flex-col items-center">
+        <h1 class="text-xl mb-3 mr-8">Trending Feeds</h1>
+        <div class="grid grid-cols-2 gap-1">
+            <div class="border"><img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHsFfe-vd1jIp0Wl2M_9-y6NQeeS19t3Ca_g&usqp=CAU"
+                    class="h-[80px] w-[80px] object-cover" alt="post"></div>
+            <div class="border"><img
+                    src="https://wiki.warthunder.com/images/thumb/c/cb/ArtImage_M24.png/800px-ArtImage_M24.png"
+                    class="h-[80px] w-[80px] object-cover" alt="post"></div>
+            <div class="border"><img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFExwfzM2dZykLGL2-4G6_yl1z9u1uoo8rYw&usqp=CAU"
+                    class="h-[80px] w-[80px] object-cover" alt="post"></div>
+            <div class="border"><img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFExwfzM2dZykLGL2-4G6_yl1z9u1uoo8rYw&usqp=CAU"
+                    class="h-[80px] w-[80px] object-cover" alt="post"></div>
         </div>
     </div>
 
     {{-- Suggestion Section --}}
-    <div class="p-4 mb-3">
+    <div class="p-4 flex flex-col items-center">
         <h1 class="text-xl mb-3">Suggestion for you</h1>
-        <div class="space-y-3 p-4">
+        <div class="space-y-3">
             {{-- Sugestion Profile --}}
             <div class="flex items-center space-x-3">
                 <img class="rounded-full h-[50px] w-[50px] object-cover"

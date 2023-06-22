@@ -51,7 +51,7 @@
             <hr class="w-full h-px my-5 bg-gray-300  dark:bg-gray-500">
 
             <div class="flex justify-center">
-                <ul class="text-xl space-y-3">
+                <ul class="text-xl space-y-5">
                     <li class="flex items-center space-x-4">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">

@@ -1,5 +1,5 @@
 <x-landing.app>
-    <div class="grow">
+    <div class="flex-1">
         <nav class="p-4 border-b shadow-md border-gray-300">
             <div class="flex items-center justify-between">
                 <a href="/" class="md:hidden">
@@ -93,7 +93,7 @@
                         </div>
                     </div>
                     <div>
-                        <img class="rounded-xl mb-3 md:h-[400px] object-cover mx-auto"
+                        <img class="rounded-xl mb-3 object-cover mx-auto"
                             src="https://www.tubefilter.com/wp-content/uploads/2023/04/dream-smp-bye.jpg"
                             alt="">
                         <div class="flex items-center justify-between justify-around">

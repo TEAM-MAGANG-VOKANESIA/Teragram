@@ -27,15 +27,15 @@
     {{-- Trending Section --}}
     <div class="p-4 mb-3">
         <h1 class="text-xl mb-4">Trending Feeds</h1>
-        <div class="grid grid-rows-2 grid-flow-col gap-4 flex justify-center">
+        <div class="grid grid-rows-2 grid-flow-col gap-1 flex justify-center">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHsFfe-vd1jIp0Wl2M_9-y6NQeeS19t3Ca_g&usqp=CAU"
-                class="w-[80px] h-[80px] rounded-md object-cover border shadow-lg" alt="post">
+                class="w-[80px] h-[80px] object-cover border" alt="post">
             <img src="https://wiki.warthunder.com/images/thumb/c/cb/ArtImage_M24.png/800px-ArtImage_M24.png"
-                class="w-[80px] h-[80px] rounded-md object-cover border shadow-lg" alt="post">
+                class="w-[80px] h-[80px] object-cover border" alt="post">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFExwfzM2dZykLGL2-4G6_yl1z9u1uoo8rYw&usqp=CAU"
-                class="w-[80px] h-[80px] rounded-md object-cover border shadow-lg" alt="post">
+                class="w-[80px] h-[80px] object-cover border" alt="post">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFExwfzM2dZykLGL2-4G6_yl1z9u1uoo8rYw&usqp=CAU"
-                class="w-[80px] h-[80px] rounded-md object-cover border shadow-lg" alt="post">
+                class="w-[80px] h-[80px] object-cover border" alt="post">
         </div>
     </div>
 

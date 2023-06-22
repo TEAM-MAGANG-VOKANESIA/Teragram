@@ -1,7 +1,5 @@
 <x-landing.app>
-    {{-- Main Content --}}
-    <div class="lg:w-5/6">
-        {{-- Navbar --}}
+    <div class="grow">
         <nav class="p-4 border-b shadow-md border-gray-300">
             <div class="flex items-center justify-between">
                 <a href="/" class="md:hidden">
@@ -24,8 +22,7 @@
                 </div>
             </div>
         </nav>
-        <x-landing.app-padding>
-            {{-- Stories --}}
+        <div class="p-6">
             <div class="mb-6">
                 <div class="flex justify-between items-center mb-6">
                     <h1 class="text-xl">Stories</h1>
@@ -67,8 +64,6 @@
                     </div>
                 </div>
             </div>
-
-            {{-- Feeds --}}
             <div class="flex justify-between items-center mb-6">
                 <h1 class="text-xl">Feeds</h1>
                 <div class="flex items-center space-x-2">
@@ -77,8 +72,6 @@
                 </div>
             </div>
 
-            {{-- Content --}}
-            {{-- Stories --}}
             <div class="bg-white shadow-md border rounded-xl p-6">
                 <div>
                     <div class="flex justify-between items-center mb-4">
@@ -100,7 +93,7 @@
                         </div>
                     </div>
                     <div>
-                        <img class="rounded-xl mb-3"
+                        <img class="rounded-xl mb-3 md:h-[400px] object-cover mx-auto"
                             src="https://www.tubefilter.com/wp-content/uploads/2023/04/dream-smp-bye.jpg"
                             alt="">
                         <div class="flex items-center justify-between justify-around">
@@ -146,7 +139,7 @@
                     </div>
                 </div>
             </div>
-        </x-landing.app-padding>
+        </div>
     </div>
-    <x-landing.homepage.left-sidebar></x-landing.homepage.left-sidebar>
+    <x-landing.right-sidebar></x-landing.right-sidebar>
 </x-landing.app>

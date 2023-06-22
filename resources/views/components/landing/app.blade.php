@@ -12,11 +12,13 @@
 <body>
     <div class="flex">
         {{-- Sidebar --}}
-        <div class="w-1/4 h-screen border-r-2 border-gray-200 hidden lg:block sticky top-0">
+        <div class="w-[250px] h-screen border-r-2 border-gray-200 hidden lg:block sticky top-0">
             {{-- Logo --}}
             <div class="mt-3">
-                <img src="{{ asset('assets/images/teragram.png') }}" alt="Logo Teragram"
-                    class="w-[160px] h-[80px] mx-auto">
+                <a href="/">
+                    <img src="{{ asset('assets/images/teragram.png') }}" alt="Logo Teragram"
+                        class="w-[160px] h-[80px] mx-auto">
+                </a>
             </div>
 
             {{-- Profile --}}
@@ -56,7 +58,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
                         </svg>
-                        <a href="">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li class="flex items-center space-x-4">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -64,7 +66,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                         </svg>
-                        <a href="">
+                        <a href="/explore">
                             Explore
                         </a>
                     </li>

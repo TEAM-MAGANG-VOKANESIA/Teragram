@@ -1,5 +1,4 @@
-{{-- Left Sidebar --}}
-<div class="w-1/4 h-screen border-l-2 border-gray-200 flex flex-col items-center hidden lg:block sticky top-0">
+<div class="w-[250px] h-screen border-l-2 border-gray-200 flex flex-col items-center hidden lg:block sticky top-0">
     {{-- Menu --}}
     <div class="flex justify-center space-x-3 mt-6 mb-4">
         <div class="border p-3 rounded-full shadow-md">

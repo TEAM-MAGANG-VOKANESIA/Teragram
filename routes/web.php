@@ -38,3 +38,11 @@ Route::get('/', function () {
 Route::get('/explore', function () {
     return view('landing.explore');
 })->middleware('auth');
+
+Route::get('/message', function () {
+    return view('landing.message.index');
+})->middleware('auth');
+
+Route::get('/message/lukman', function () {
+    return view('landing.message.single-message');
+})->middleware('auth');

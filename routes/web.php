@@ -40,5 +40,9 @@ Route::get('/explore', function () {
 })->middleware('auth');
 
 Route::get('/message', function () {
-    return view('landing.message');
+    return view('landing.message.index');
+})->middleware('auth');
+
+Route::get('/message/lukman', function () {
+    return view('landing.message.single-message');
 })->middleware('auth');

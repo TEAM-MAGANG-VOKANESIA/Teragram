@@ -1,5 +1,5 @@
 <x-landing.app>
-    <div class="flex-1">
+    <div class="flex-1 lg:mx-[250px]">
         <nav class="p-4 border-b shadow-md border-gray-300">
             <div class="flex items-center justify-between">
                 <a href="/" class="md:hidden">

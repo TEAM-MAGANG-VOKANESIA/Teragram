@@ -1,5 +1,5 @@
 <x-landing.app>
-    <div class="flex-1">
+    <div class="flex-1 lg:ml-[250px]">
         <div class="p-3">
             <div class="grid grid-cols-4 md:grid-cols-3 gap-1">
                 <div class="border aspect-square relative">

@@ -46,3 +46,23 @@ Route::get('/message', function () {
 Route::get('/message/lukman', function () {
     return view('landing.message.single-message');
 })->middleware('auth');
+
+Route::get('/setting/privacy', function () {
+    return view('landing.setting.privacy');
+})->middleware('auth');
+
+Route::get('/setting/push-notification', function () {
+    return view('landing.setting.push-notification');
+})->middleware('auth');
+
+Route::get('/setting/email-notification', function () {
+    return view('landing.setting.email-notification');
+})->middleware('auth');
+
+Route::get('/setting/edit-profile', function () {
+    return view('landing.setting.edit-profile');
+})->middleware('auth');
+
+Route::get('/your-activity/interaction/likes', function () {
+    return view('landing.your-activity.interactions.likes');
+})->middleware('auth');

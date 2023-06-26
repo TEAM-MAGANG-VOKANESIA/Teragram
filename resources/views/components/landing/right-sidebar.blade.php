@@ -1,6 +1,6 @@
 <div class="w-[250px] h-screen border-l-2 border-gray-200 flex flex-col items-center hidden lg:block fixed right-0">
     {{-- Menu --}}
-    <div class="flex justify-center space-x-3 mt-6 mb-4">
+    <div class="flex items-center justify-center space-x-3 mt-6 mb-4">
         <div class="border p-3 rounded-full shadow-md">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">
@@ -15,13 +15,42 @@
                     d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0M3.124 7.5A8.969 8.969 0 015.292 3m13.416 0a8.969 8.969 0 012.168 4.5" />
             </svg>
         </div>
-        <div class="border p-3 rounded-full shadow-md">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
-            </svg>
+        <div class="relative inline-block text-left">
+            <button type="button" class="border p-3 rounded-full shadow-md" id="myButton">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
+                </svg>
+            </button>
+            <ul class="absolute right-5 mt-3 bg-white shadow-2xl rounded-xl hidden w-max text-sm" id="dropdownMenus">
+                <a href="/swith-account">
+                    <li class="p-2 w-full rounded-xl hover:bg-gray-100 w-[150px]">
+                        Swicth Account
+                    </li>
+                </a>
+                <a href="/logout">
+                    <li class="p-2 w-full rounded-xl hover:bg-gray-100 w-[150px]">
+                        Log out
+                    </li>
+                </a>
+            </ul>
         </div>
+        <script>
+            var button = document.getElementById('myButton');
+            var dropdownMenu = document.getElementById('dropdownMenus');
+            var isDropdownVisible = false;
+
+            button.addEventListener('click', function() {
+                if (isDropdownVisible) {
+                    dropdownMenu.classList.add('hidden');
+                    isDropdownVisible = false;
+                } else {
+                    dropdownMenu.classList.remove('hidden');
+                    isDropdownVisible = true;
+                }
+            })
+        </script>
     </div>
 
     {{-- Trending Section --}}

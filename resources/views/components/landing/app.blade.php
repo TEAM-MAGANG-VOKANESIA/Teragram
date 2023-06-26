@@ -7,12 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     <title>Teragram</title>
+
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
 </head>
 
 <body>
-    <div class="flex">
+    <div class="flex h-screen">
         {{-- Sidebar --}}
-        <div class="w-[250px] h-screen border-r-2 border-gray-200 hidden lg:block sticky top-0">
+        <div class="w-[250px] h-screen border-r-2 border-gray-200 hidden lg:block fixed bg-white top-0">
             {{-- Logo --}}
             <div class="mt-3">
                 <a href="/">
@@ -50,8 +53,8 @@
 
             <hr class="w-full h-px my-5 bg-gray-300  dark:bg-gray-500">
 
-            <div>
-                <ul class="text-xl space-y-4 p-9">
+            <div class="flex justify-center">
+                <ul class="text-xl space-y-5 relative">
                     <li class="flex items-center space-x-4">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
@@ -88,19 +91,76 @@
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
                         </svg>
-                        <a href="">
+                        <a href="/message">
                             Message
                         </a>
                     </li>
-                    <li class="flex items-center space-x-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
-                        </svg>
-                        <a href="">
-                            More
-                        </a>
+                    <li class="flex items-center space-x-4 space-y-5">
+                        <div class="inline-block text-left">
+                            <ul class="absolute bg-white w-max shadow-2xl rounded-xl hidden border top-0"
+                                id="moreMenus">
+                                <a href="/settings">
+                                    <li
+                                        class="p-2 text-sm rounded-xl hover:bg-gray-100 w-full flex items-center space-x-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        </svg>
+                                        <h1>Settings</h1>
+                                    </li>
+                                    <li
+                                        class="p-2 text-sm rounded-xl hover:bg-gray-100 w-full flex items-center space-x-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <h1>Your activity</h1>
+                                    </li>
+                                    <li
+                                        class="p-2 text-sm rounded-xl hover:bg-gray-100 w-full flex items-center space-x-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
+                                        </svg>
+                                        <h1>Saved</h1>
+                                    </li>
+                                    <li
+                                        class="p-2 text-sm rounded-xl hover:bg-gray-100 w-full flex items-center space-x-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                                        </svg>
+                                        <h1>Switch apperiance</h1>
+                                    </li>
+                                    <li
+                                        class="p-2 text-sm rounded-xl hover:bg-gray-100 w-full flex items-center space-x-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                                        </svg>
+                                        <h1>Report a problem</h1>
+                                    </li>
+                                </a>
+                            </ul>
+                            <button type="button" id="moreButton" class="flex items-center space-x-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
+                                </svg>
+                                <a>
+                                    More
+                                </a>
+                            </button>
+                        </div>
+
                     </li>
                 </ul>
             </div>
@@ -202,16 +262,17 @@
         {{ $slot }}
     </div>
     <script>
-        var notificationButton = document.getElementById('notificationButton');
-        var isNotificationShow = false;
-        var notificationMenu = document.getElementById('notificationMenu');
-        notificationButton.addEventListener('click', function() {
-            if (isNotificationShow) {
-                notificationMenu.classList.add('hidden');
-                isNotificationShow = false;
+        var moreButton = document.getElementById('moreButton');
+        var moreDropdownMenu = document.getElementById('moreMenus');
+        var moreIsDropdownVisible = false;
+
+        moreButton.addEventListener('click', function() {
+            if (moreIsDropdownVisible) {
+                moreDropdownMenu.classList.add('hidden');
+                moreIsDropdownVisible = false;
             } else {
-                notificationMenu.classList.remove('hidden');
-                isNotificationShow = true;
+                moreDropdownMenu.classList.remove('hidden');
+                moreIsDropdownVisible = true;
             }
         })
     </script>

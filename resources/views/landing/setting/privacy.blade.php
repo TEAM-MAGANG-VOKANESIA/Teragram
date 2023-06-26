@@ -1,7 +1,7 @@
 <x-landing.app>
     <div class="flex-1 lg:ml-[250px]">
         <x-sidebar-setting>
-            <div class="md:w-3/4  border  py-6 px-3 w-full">
+            <div class="sm:w-full md:3/4 lg:w-3/4 border  py-6 px-3">
                 <div class="border-b-2 mx-6">
                     <div class="mb-4">
                         <h1 class="font-bold text-xl ">Account Privacy</h1>

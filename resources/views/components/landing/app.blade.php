@@ -165,6 +165,22 @@
         </div>
         {{ $slot }}
     </div>
+    <script>
+        var moreButton = document.getElementById('moreButton');
+        var moreDropdownMenu = document.getElementById('moreMenus');
+        var moreIsDropdownVisible = false;
+
+        moreButton.addEventListener('click', function() {
+            if (moreIsDropdownVisible) {
+                moreDropdownMenu.classList.add('hidden');
+                moreIsDropdownVisible = false;
+            } else {
+                moreDropdownMenu.classList.remove('hidden');
+                moreIsDropdownVisible = true;
+            }
+        })
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
 </body>
 
 </html>

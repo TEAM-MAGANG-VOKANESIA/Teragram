@@ -275,6 +275,19 @@
                 moreIsDropdownVisible = true;
             }
         })
+
+        var notificationButton = document.getElementById('notificationButton');
+        var isNotificationShow = false;
+        var notificationMenu = document.getElementById('notificationMenu');
+        notificationButton.addEventListener('click', function() {
+            if (isNotificationShow) {
+                notificationMenu.classList.add('hidden');
+                isNotificationShow = false;
+            } else {
+                notificationMenu.classList.remove('hidden');
+                isNotificationShow = true
+            }
+        })
     </script>
 </body>
 

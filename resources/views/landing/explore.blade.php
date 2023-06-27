@@ -1,18 +1,18 @@
 <x-landing.app>
-    <div class="grow">
+    <div class="flex-1 lg:ml-[250px]">
         <div class="p-3">
             <div class="grid grid-cols-4 md:grid-cols-3 gap-1">
-                <div class="border aspect-square relative">
-                    <img src="https://placehold.co/600x400" class="object-cover absolute h-full" alt="">
+                <div class="border aspect-square">
+                    <img src="https://placehold.co/600x400" class="object-cover h-full" alt="">
                 </div>
-                <div class="border aspect-square relative">
-                    <img src="https://placehold.co/600x400" class="object-cover absolute h-full" alt="">
+                <div class="border aspect-square">
+                    <img src="https://placehold.co/600x400" class="object-cover h-full" alt="">
                 </div>
-                <div class="border aspect-square relative">
-                    <img src="https://placehold.co/600x400" class="object-cover absolute h-full" alt="">
+                <div class="border aspect-square">
+                    <img src="https://placehold.co/600x400" class="object-cover h-full" alt="">
                 </div>
-                <div class="border aspect-potrait bg-gray-100 row-span-2 relative">
-                    <video src="https://placehold.co/1920x1080.mp4" class="position-center absolute h-full"></video>
+                <div class="border aspect-potrait bg-gray-100 row-span-2">
+                    <video src="https://placehold.co/1920x1080.mp4" class="position-center h-full"></video>
                     <div class="absolute right-0 p-2">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6 text-gray-400">
@@ -21,14 +21,14 @@
                         </svg>
                     </div>
                 </div>
-                <div class="border aspect-square relative">
-                    <img src="https://placehold.co/600x400" class="object-cover absolute h-full" alt="">
+                <div class="border aspect-square">
+                    <img src="https://placehold.co/600x400" class="object-cover h-full" alt="">
                 </div>
-                <div class="border aspect-square relative">
-                    <img src="https://placehold.co/600x400" class="object-cover absolute h-full" alt="">
+                <div class="border aspect-square">
+                    <img src="https://placehold.co/600x400" class="object-cover h-full" alt="">
                 </div>
-                <div class="border aspect-square relative">
-                    <img src="https://placehold.co/600x400" class="object-cover absolute h-full" alt="">
+                <div class="border aspect-square">
+                    <img src="https://placehold.co/600x400" class="object-cover h-full" alt="">
                 </div>
             </div>
         </div>

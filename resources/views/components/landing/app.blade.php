@@ -166,7 +166,8 @@
             </div>
         </div>
         {{-- Notifications --}}
-        <div id="notificationMenu" class="w-[529px] h-[844px] fixed ml-[250px] overflow-y-auto overflow-x-hidden hidden">
+        <div id="notificationMenu"
+            class="w-[529px] h-[844px] fixed ml-[250px] overflow-y-auto overflow-x-hidden hidden">
             <div class="w-[529px] h-[832px] left-0 top-0 absolute bg-neutral-50 shadow"></div>
             <div class="w-[360px] h-[52px] left-[27px] top-[28px] absolute text-black text-[32px] font-bold">
                 Notifications</div>

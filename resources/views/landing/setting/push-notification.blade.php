@@ -1,13 +1,7 @@
 <x-landing.app>
     <div class="flex-1 lg:ml-[250px]">
-        <div class="bg-white border m-3 rounded-sm border-gray-300 flex">
-            <div class="w-1/4 border-r-2 ">
-                <div class="font-normal px-4 py-2 mt-5">
-                    <h2 class="text-lg font-semibold">Push Notifications</h2>
-                </div>
-            </div>
-
-            <div class="w-3/4">
+        <x-sidebar-setting>
+            <div class="sm:w-full md:3/4 lg:w-3/4 border  py-6 px-3">
                 <div class="p-4 w-full h-full">
                     <div class="border-b-2 gray-300">
                         <p class="font-bold text-xl mt-3 my-6 ml-5">Push Notifications</p>
@@ -917,8 +911,7 @@
                 </div>
 
             </div>
-        </div>
-
+        </x-sidebar-setting>
         <style>
             .checkbox:checked {
                 border: none;

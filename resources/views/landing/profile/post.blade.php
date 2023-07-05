@@ -1,19 +1,21 @@
 <x-landing.app>
     <div class="flex-1 lg:ml-[250px]">
-        <div class="p-4 w-full h-full">
-            <div class="flex flex-col justify-center m-16">
-                <div class="flex items-center space-x-7">
-                    <div>
+        <div class="md:p-12 p-5 w-full">
+            <div class="w-full h-full">
+                <div class="flex flex-col md:flex-row md:items-center">
+                    <div class="px-4  md:ml-[25px] lg:ml-[60px]">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6CUfQ9uPaBGxqoYL1r0_gWoH0aELe86-XaQ&amp;usqp=CAU"
-                            alt="Profile Image" class="w-[120px] h-[120px] rounded-full object-cover">
+                            alt="Profile Image"
+                            class="md:w-[120px] md:h-[120px] w-[80px] h-[80px] rounded-full object-cover">
                     </div>
-                    <div class="space-y-2">
+                    <div class="p-4 md:pl-10">
                         <div class="flex items-center space-x-4">
-                            <p class="text-lg font-medium">
+                            <p class="text-xl font-medium">
                                 Metaverse5694
                             </p>
-                            <div>
-                                <button class="bg-gray-200 hover:bg-gray-400 text-gray-800 rounded-md">
+                            <div
+                                class="hidden md:block px-3 py-1 bg-gray-200 hover:bg-gray-400 text-gray-800 rounded-md shadow-xl">
+                                <button>
                                     Edit Profile
                                 </button>
                             </div>
@@ -25,39 +27,34 @@
                                 </svg>
                             </div>
                         </div>
-
-                        <div class="flex items-center space-x-4">
+                        <div class="flex w-full md:justify-between space-x-3 items-center mt-3">
                             <div class="flex">
-                                <p class=" text-sm font-bold">
+                                <p class="text-sm font-bold">
                                     3
                                 </p>
-                                <p class=" text-sm">
+                                <p class="text-sm">
                                     POST
                                 </p>
                             </div>
-
-
                             <div class="flex">
                                 <p class="text-sm font-bold">
                                     333
                                 </p>
-                                <p class=" text-sm">
+                                <p class="text-sm">
                                     Followers
                                 </p>
                             </div>
-
-
                             <div class="flex">
-                                <p class=" text-sm font-bold">
+                                <p class="text-sm font-bold">
                                     333
                                 </p>
-                                <p class=" text-sm">
+                                <p class="text-sm">
                                     Following
                                 </p>
                             </div>
                         </div>
-                        <div>
-                            <p class=" text-sm font-bold">
+                        <div class="mt-3">
+                            <p class=" text-md font-medium">
                                 user
                             </p>
                             <p class=" text-sm">
@@ -66,92 +63,79 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-10 flex flex-col space-x-5">
-                    <div class="flex items-center space-x-6 text-center">
-                        <div class="flex flex-col">
-                            <img class="w-16 h-16 mb-2 rounded-full object-cover border-2 border-[#00FFFF] shadow-xl"
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzHQv_th9wq3ivQ1CVk7UZRxhbPq64oQrg5Q&usqp=CAU"
-                                alt="">
-                            <p>Akuuu?</p>
-                        </div>
-                        <div class="flex flex-col">
-                            <img class="w-16 h-16 mb-2 rounded-full object-cover border-2 border-[#00FFFF] shadow-xl"
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzHQv_th9wq3ivQ1CVk7UZRxhbPq64oQrg5Q&usqp=CAU"
-                                alt="">
-                            <p>Koncohhh</p>
-                        </div>
-                        <div class="mb-0,5">
+                <div class="flex items-center p-4 text-center md:space-x-10 space-x-5 text-sm">
+                    <div class="flex flex-col">
+                        <img class="md:w-[80px] md:h-[80px] mb-2 h-[50px] w-[50px] rounded-full object-cover border-2 border-[#00FFFF] shadow-xl"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzHQv_th9wq3ivQ1CVk7UZRxhbPq64oQrg5Q&usqp=CAU"
+                            alt="">
+                        <p>Koncohhh</p>
+                    </div>
+                    <div class="flex flex-col">
+                        <img class="md:w-[80px] md:h-[80px] mb-2 h-[50px] w-[50px] rounded-full object-cover border-2 border-[#00FFFF] shadow-xl"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzHQv_th9wq3ivQ1CVk7UZRxhbPq64oQrg5Q&usqp=CAU"
+                            alt="">
+                        <p>Akuuu?</p>
+                    </div>
+                </div>
+                <div class="flex justify-center md:space-x-20 space-x-10 border-t">
+                    <div class="border-t border-gray-300">
+                        <div class="flex items-center space-x-2  mt-5">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor"
-                                class="w-16 h-16 border-2 rounded-full border-[#000000] bg-gray-400">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5zm0 9.75h2.25A2.25 2.25 0 0010.5 18v-2.25a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z" />
                             </svg>
-                            <p class="mt-2">New</p>
+                            <p class="hidden md:block text-sm">POST</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2  mt-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round"
+                                    d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
+                            </svg>
+                            <p class="hidden md:block text-sm">REELS</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2  mt-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
+                            </svg>
+                            <p class="hidden md:block text-sm">SAVED</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2  mt-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <p class="hidden md:block text-sm">TAGGED</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center w-full mt-[25px]">
+                    <div class="w-full gap-1 grid grid-cols-3">
+                        <div class="aspect-square">
+                            <img class="object-cover h-full" src="https://placehold.co/600x400" alt="">
+                        </div>
+                        <div class="aspect-square">
+                            <img class="object-cover h-full" src="https://placehold.co/600x400" alt="">
+                        </div>
+                        <div class="aspect-square">
+                            <img class="object-cover h-full" src="https://placehold.co/600x400" alt="">
+                        </div>
+                        <div class="aspect-square">
+                            <img class="object-cover h-full" src="https://placehold.co/600x400" alt="">
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="flex justify-center space-x-20">
-                <div class="flex items-center space-x-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5zm0 9.75h2.25A2.25 2.25 0 0010.5 18v-2.25a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z" />
-                    </svg>
-                    <p class=" text-sm">POST</p>
-                </div>
-                <div class="flex items-center space-x-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round"
-                            d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
-                    </svg>
-                    <p class=" text-sm">REELS</p>
-                </div>
-                <div class="flex items-center space-x-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
-                    </svg>
-                    <p class=" text-sm">SAVED</p>
-                </div>
-                <div class="flex items-center space-x-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    <p class=" text-sm">TAGGED</p>
-                </div>
-            </div>
-            <div class="flex justify-center w-full">
-                <div class="flex items-center w-full p-10 space-x-2">
-                    <img class="rounded aspect-square object-cover  w-full"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzHQv_th9wq3ivQ1CVk7UZRxhbPq64oQrg5Q&usqp=CAU"
-                        alt="">
-                    <img class="rounded aspect-square object-cover w-full"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzHQv_th9wq3ivQ1CVk7UZRxhbPq64oQrg5Q&usqp=CAU"
-                        alt="">
-                    <img class="rounded aspect-square object-cover w-full"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzHQv_th9wq3ivQ1CVk7UZRxhbPq64oQrg5Q&usqp=CAU"
-                        alt="">
-                </div>
-            </div>
-            <div class="flex justify-center space-x-8">
-                <p class="text-sm font-bold">About</p>
-                <p class="text-sm font-bold">Blog</p>
-                <p class="text-sm font-bold">Jobs</p>
-                <p class="text-sm font-bold">Help</p>
-                <p class="text-sm font-bold">Privacy Terms</p>
-                <p class="text-sm font-bold">Locations</p>
-                <p class="text-sm font-bold">Teragram Lite</p>
-            </div>
-            <div class="flex justify-center space-x-8 p-6 ">
-                <button class="bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold rounded-md">
-                    English
-                </button>
-                <p class="font-semibold text-sm">© 2023 Teragram from Vistech</p>
-            </div>
         </div>
+    </div>
 </x-landing.app>

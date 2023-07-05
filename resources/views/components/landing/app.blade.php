@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="flex h-screen">
+    <div class="flex h-screen overflow-x-hidden">
         {{-- Sidebar --}}
         <div class="w-[250px] h-screen border-r-2 border-gray-200 hidden lg:block fixed bg-white top-0">
             {{-- Logo --}}

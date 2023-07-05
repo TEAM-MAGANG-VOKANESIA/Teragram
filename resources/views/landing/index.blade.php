@@ -67,8 +67,8 @@
             <div class="flex justify-between items-center mb-6">
                 <h1 class="text-xl">Feeds</h1>
                 <div class="flex items-center space-x-2">
-                    <div class="border rounded-full p-1 pl-4 pr-4 bg-gray-100 drop-shadow">Latest</div>
-                    <div class="border rounded-full p-1 pl-4 pr-4 bg-gray-100 drop-shadow">Popular</div>
+                    <div class="border rounded-full p-1 pl-4 pr-4 bg-gray-100 shadow-md">Latest</div>
+                    <div class="border rounded-full p-1 pl-4 pr-4 bg-gray-100 shadow-md">Popular</div>
                 </div>
             </div>
 

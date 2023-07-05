@@ -56,7 +56,7 @@
                         </div>
 
                         <div class="font-normal text-sm py-2">
-                            johnapplesssed like your photo
+                            johnapplesed like your photo
                         </div>
                     </div>
 

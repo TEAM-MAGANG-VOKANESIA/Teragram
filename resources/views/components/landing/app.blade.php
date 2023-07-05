@@ -255,34 +255,8 @@
         </div>
         {{ $slot }}
     </div>
-    <script>
-        var moreButton = document.getElementById('moreButton');
-        var moreDropdownMenu = document.getElementById('moreMenus');
-        var moreIsDropdownVisible = false;
-
-        moreButton.addEventListener('click', function() {
-            if (moreIsDropdownVisible) {
-                moreDropdownMenu.classList.add('hidden');
-                moreIsDropdownVisible = false;
-            } else {
-                moreDropdownMenu.classList.remove('hidden');
-                moreIsDropdownVisible = true;
-            }
-        })
-
-        var notificationButton = document.getElementById('notificationButton');
-        var isNotificationShow = true;
-        var notificationMenu = document.getElementById('notificationMenu');
-        notificationButton.addEventListener('click', function() {
-            if (isNotificationShow) {
-                notificationMenu.classList.add('lg:block');
-                isNotificationShow = false;
-            } else {
-                notificationMenu.classList.remove('lg:block');
-                isNotificationShow = true
-            }
-        })
-    </script>
+    <script src="{{asset('assets/js/more-button.js')}}"></script>
+    <script src="{{asset('assets/js/notification-button.js')}}"></script>
 </body>
 
 </html>

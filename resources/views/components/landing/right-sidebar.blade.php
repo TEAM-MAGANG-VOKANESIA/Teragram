@@ -1,4 +1,4 @@
-<div class="w-[250px] h-screen border-l-2 border-gray-200 flex flex-col items-center hidden lg:block fixed right-0">
+<div class="w-[250px] h-screen border-l-2 border-gray-200 flex-col items-center hidden lg:block fixed right-0">
     {{-- Menu --}}
     <div class="flex items-center justify-center space-x-3 mt-6 mb-4">
         <div class="border p-3 rounded-full shadow-md">
@@ -25,32 +25,18 @@
             </button>
             <ul class="absolute right-5 mt-3 bg-white shadow-2xl rounded-xl hidden w-max text-sm" id="dropdownMenus">
                 <a href="/swith-account">
-                    <li class="p-2 w-full rounded-xl hover:bg-gray-100 w-[150px]">
+                    <li class="p-2 rounded-xl hover:bg-gray-100 w-[150px]">
                         Swicth Account
                     </li>
                 </a>
                 <a href="/logout">
-                    <li class="p-2 w-full rounded-xl hover:bg-gray-100 w-[150px]">
+                    <li class="p-2 rounded-xl hover:bg-gray-100 w-[150px]">
                         Log out
                     </li>
                 </a>
             </ul>
         </div>
-        <script>
-            var button = document.getElementById('myButton');
-            var dropdownMenu = document.getElementById('dropdownMenus');
-            var isDropdownVisible = false;
-
-            button.addEventListener('click', function() {
-                if (isDropdownVisible) {
-                    dropdownMenu.classList.add('hidden');
-                    isDropdownVisible = false;
-                } else {
-                    dropdownMenu.classList.remove('hidden');
-                    isDropdownVisible = true;
-                }
-            })
-        </script>
+        <script src="{{asset('assets/js/right-sidebar-button.js')}}"></script>
     </div>
 
     {{-- Trending Section --}}

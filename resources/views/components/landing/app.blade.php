@@ -99,7 +99,7 @@
                         <div class="inline-block text-left">
                             <ul class="absolute bg-white w-max shadow-2xl rounded-xl hidden border top-0"
                                 id="moreMenus">
-                                <a href="/settings">
+                                <a href="/setting/edit-profile">
                                     <li
                                         class="p-2 text-sm rounded-xl hover:bg-gray-100 w-full flex items-center space-x-4">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

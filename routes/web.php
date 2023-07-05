@@ -70,3 +70,7 @@ Route::get('/your-activity/interaction/likes', function () {
 Route::get('/your-activity/interaction/comments', function () {
     return view('landing.your-activity.interactions.comments');
 })->middleware('auth');
+
+Route::get('/profile/post', function () {
+    return view('landing.profile.post');
+})->middleware('auth');

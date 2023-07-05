@@ -257,6 +257,7 @@
     </div>
     <script src="{{asset('assets/js/more-button.js')}}"></script>
     <script src="{{asset('assets/js/notification-button.js')}}"></script>
+    <script src="{{asset('assets/js/right-sidebar-button.js')}}"></script>
 </body>
 
 </html>

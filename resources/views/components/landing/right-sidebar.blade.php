@@ -36,7 +36,6 @@
                 </a>
             </ul>
         </div>
-        <script src="{{asset('assets/js/right-sidebar-button.js')}}"></script>
     </div>
 
     {{-- Trending Section --}}

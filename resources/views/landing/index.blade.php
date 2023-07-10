@@ -6,7 +6,7 @@
                     <img class="w-[90px]" src="{{ asset('assets/images/teragram.png') }}" alt="Logo Teragram">
                 </a>
                 <input type="text" class="border p-2 rounded-lg shadow-md hidden md:block" placeholder="Search">
-                <div class="flex items-center border p-2 rounded-full shadow-md hidden md:flex">
+                <div class="items-center border p-2 rounded-full shadow-md hidden md:flex">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -67,8 +67,8 @@
             <div class="flex justify-between items-center mb-6">
                 <h1 class="text-xl">Feeds</h1>
                 <div class="flex items-center space-x-2">
-                    <div class="border rounded-full p-1 pl-4 pr-4 bg-gray-100 drop-shadow">Latest</div>
-                    <div class="border rounded-full p-1 pl-4 pr-4 bg-gray-100 drop-shadow">Popular</div>
+                    <div class="border rounded-full p-1 pl-4 pr-4 bg-gray-100 shadow-md">Latest</div>
+                    <div class="border rounded-full p-1 pl-4 pr-4 bg-gray-100 shadow-md">Popular</div>
                 </div>
             </div>
 
@@ -96,7 +96,7 @@
                         <img class="rounded-xl mb-3 object-cover mx-auto"
                             src="https://www.tubefilter.com/wp-content/uploads/2023/04/dream-smp-bye.jpg"
                             alt="">
-                        <div class="flex items-center justify-between justify-around">
+                        <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

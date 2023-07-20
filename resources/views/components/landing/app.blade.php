@@ -111,6 +111,8 @@
                                         </svg>
                                         <h1>Settings</h1>
                                     </li>
+                                </a>
+                                <a href="/your-activity/interaction/likes">
                                     <li
                                         class="p-2 text-sm rounded-xl hover:bg-gray-100 w-full flex items-center space-x-4">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -120,34 +122,34 @@
                                         </svg>
                                         <h1>Your activity</h1>
                                     </li>
-                                    <li
-                                        class="p-2 text-sm rounded-xl hover:bg-gray-100 w-full flex items-center space-x-4">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
-                                        </svg>
-                                        <h1>Saved</h1>
-                                    </li>
-                                    <li
-                                        class="p-2 text-sm rounded-xl hover:bg-gray-100 w-full flex items-center space-x-4">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
-                                        </svg>
-                                        <h1>Switch apperiance</h1>
-                                    </li>
-                                    <li
-                                        class="p-2 text-sm rounded-xl hover:bg-gray-100 w-full flex items-center space-x-4">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
-                                        </svg>
-                                        <h1>Report a problem</h1>
-                                    </li>
                                 </a>
+                                <li class="p-2 text-sm rounded-xl hover:bg-gray-100 w-full flex items-center space-x-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
+                                    </svg>
+                                    <h1>Saved</h1>
+                                </li>
+                                <li
+                                    class="p-2 text-sm rounded-xl hover:bg-gray-100 w-full flex items-center space-x-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                                    </svg>
+                                    <h1>Switch apperiance</h1>
+                                </li>
+                                <li
+                                    class="p-2 text-sm rounded-xl hover:bg-gray-100 w-full flex items-center space-x-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                                    </svg>
+                                    <h1>Report a problem</h1>
+                                </li>
+
                             </ul>
                             <button type="button" id="moreButton" class="flex items-center space-x-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -255,9 +257,9 @@
         </div>
         {{ $slot }}
     </div>
-    <script src="{{asset('assets/js/more-button.js')}}"></script>
-    <script src="{{asset('assets/js/notification-button.js')}}"></script>
-    <script src="{{asset('assets/js/right-sidebar-button.js')}}"></script>
+    <script src="{{ asset('assets/js/more-button.js') }}"></script>
+    <script src="{{ asset('assets/js/notification-button.js') }}"></script>
+    <script src="{{ asset('assets/js/right-sidebar-button.js') }}"></script>
 </body>
 
 </html>

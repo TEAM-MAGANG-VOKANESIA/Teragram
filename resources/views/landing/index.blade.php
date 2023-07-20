@@ -6,12 +6,13 @@
                     <img class="w-[90px]" src="{{ asset('assets/images/teragram.png') }}" alt="Logo Teragram">
                 </a>
                 <input type="text" class="border p-2 rounded-lg shadow-md hidden md:block" placeholder="Search">
-                <div class="items-center border p-3 rounded-full shadow-md hidden md:flex space-x-2">
+                <div class="items-center border p-3 rounded-full shadow-md hidden md:flex space-x-2"
+                    onclick="my_modal_1.showModal()">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                     </svg>
-                    <p>Create New Post</p>
+                    <button>Create New Post</button>
                 </div>
                 <div class="border p-3 rounded-full shadow-md md:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -141,5 +142,72 @@
             </div>
         </div>
     </div>
+    <dialog id="my_modal_1" class="modal">
+        <form method="dialog" class="modal-box bg-white flex flex-col items-center">
+            <button class="absolute right-5 top-5">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h3 class="font-bold text-xl mb-10">Create new post</h3>
+            <div class="border-4 border-gray-300 rounded-full p-4 w-max shadow-2xl">
+                <img src="{{ asset('assets/images/create-new-post-icon.png') }}" class="w-[70px]" alt="not found">
+            </div>
+            <p class="py-4 text-gray-800 text-xl">Drag photos and videos here</p>
+            <div class="modal-action">
+                <button class="bg-sky-400 text-white p-3 rounded-md" onclick="my_modal_2.showModal()">Select from
+                    computer</button>
+            </div>
+        </form>
+    </dialog>
+    <dialog id="my_modal_2" class="modal px-20 overflow-y-auto">
+        <form method="dialog" class="rounded-xl bg-white flex flex-col items-center">
+            <div class="border-b-2 border-gray-300 text-xl w-full flex items-center justify-between py-5 px-5">
+                <div onclick="my_modal_1.showModal()">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                    </svg>
+                </div>
+                <div class="flex item-center">
+                    <p>Create New Post</p>
+                    <p class="text-sky-400 mx-5">Share</p>
+                </div>
+            </div>
+            <div class="md:flex">
+                <div class="md:w-1/2">
+                    <img src="https://media.npr.org/assets/artslife/movies/2009/08/ponyo/float-9b12df8eae8c7e00b19cb1a859a8269072d4095a-s1100-c50.jpg"
+                        alt="" class="h-full w-full object-cover">
+                </div>
+                <div class="md:w-1/2 py-3 px-3">
+                    <div class="flex items-center space-x-4 mb-5">
+                        <div>
+                            <img class="w-16 h-16 mb-2 rounded-full object-cover border-2 border-[#ff00e5] shadow-xl"
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzHQv_th9wq3ivQ1CVk7UZRxhbPq64oQrg5Q&usqp=CAU"
+                                alt="">
+                        </div>
+                        <div class="text-xl">
+                            <p>itsMendax</p>
+                        </div>
+                    </div>
+                    <textarea class="rounded-xl border-0 w-full h-[300px] mb-5" placeholder="write a caption.."></textarea>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <button class="p-2 bg-sky-400 rounded-md text-white px-5">Post</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </dialog>
     <x-landing.right-sidebar></x-landing.right-sidebar>
 </x-landing.app>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\SignupController;
+use App\Http\Controllers\TestUploadImageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -78,3 +79,8 @@ Route::get('/your-activity/interaction/story', function () {
 Route::get('/profile/post', function () {
     return view('landing.profile.post');
 })->middleware('auth');
+
+Route::controller(TestUploadImageController::class)->group(function () {
+    Route::get('/post', 'index')->name('post.index');
+    Route::post('/post/store', 'post')->name('post');
+});

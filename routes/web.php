@@ -82,7 +82,7 @@ Route::get('/profile/post', function () {
 })->middleware('auth');
 
 Route::controller(TestUploadImageController::class)->group(function () {
-    Route::get('/post', 'index')->name('post.index');
+    Route::get('/rendy/pacarnya/ponyo', 'index')->name('post.index');
     Route::post('/post/store', 'post')->name('post');
 });
 

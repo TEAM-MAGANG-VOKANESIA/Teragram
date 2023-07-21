@@ -1,6 +1,6 @@
 <x-landing.app>
     <div class="flex-1 lg:mx-[250px]">
-        <nav class="p-4 border-b shadow-md border-gray-300">
+        <nav class="px-4 py-2 border-b shadow-md border-gray-300">
             <div class="flex items-center justify-between">
                 <a href="/" class="md:hidden">
                     <img class="w-[90px]" src="{{ asset('assets/images/teragram.png') }}" alt="Logo Teragram">
@@ -14,13 +14,25 @@
                     </svg>
                     <button>Create New Post</button>
                 </div>
-                <div class="border p-3 rounded-full shadow-md md:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
-                    </svg>
-                </div>
+                <details class="dropdown dropdown-end md:hidden block">
+                    <summary class="btn border-0 rounded-full">
+                        <div class="border p-3 rounded-full shadow-md md:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
+                            </svg>
+                        </div>
+                    </summary>
+                    <ul class="p-2 shadow-2xl menu dropdown-content z-[1] rounded-box w-52 bg-white">
+                        <li class="hover:bg-gray-200 rounded-xl"><a>Home</a></li>
+                        <li class="hover:bg-gray-200 rounded-xl"><a>Explore</a></li>
+                        <li class="hover:bg-gray-200 rounded-xl"><a>Message</a></li>
+                        <li class="hover:bg-gray-200 rounded-xl"><a>Setting</a></li>
+                        <li class="hover:bg-gray-200 rounded-xl"><a>Your activity</a></li>
+                        <li class="hover:bg-gray-200 rounded-xl"><a>Report a problem</a></li>
+                    </ul>
+                </details>
             </div>
         </nav>
         <div class="p-6">
@@ -73,7 +85,7 @@
                 </div>
             </div>
 
-            <div class="bg-white shadow-md border rounded-xl p-6">
+            <div class="bg-white shadow-md border rounded-xl md:p-6 p-4">
                 <div>
                     <div class="flex justify-between items-center mb-4">
                         <div class="flex items-center space-x-3">

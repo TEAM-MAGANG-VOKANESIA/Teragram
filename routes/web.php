@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\SignupController;
+use App\Http\Controllers\Landing\PostController;
 use App\Http\Controllers\TestUploadImageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -83,4 +84,9 @@ Route::get('/profile/post', function () {
 Route::controller(TestUploadImageController::class)->group(function () {
     Route::get('/post', 'index')->name('post.index');
     Route::post('/post/store', 'post')->name('post');
+});
+
+Route::controller(PostController::class)->group(function () {
+    Route::post('/store/image', 'storeImage')->name('store.image');
+    Route::post('/store/caption', 'storeCaption')->name('store.caption');
 });

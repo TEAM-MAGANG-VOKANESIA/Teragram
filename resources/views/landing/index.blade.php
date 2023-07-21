@@ -191,10 +191,10 @@
             <div class="md:flex">
                 <div class="md:w-1/2">
                     <img src="https://media.npr.org/assets/artslife/movies/2009/08/ponyo/float-9b12df8eae8c7e00b19cb1a859a8269072d4095a-s1100-c50.jpg"
-                        alt="" class="h-full w-full object-cover">
+                        alt="" class="h-full w-full object-cover rounded-b-xl">
                 </div>
                 <div class="md:w-1/2 py-3 px-3">
-                    <div class="flex items-center space-x-4 mb-5">
+                    <div class="items-center space-x-4 mb-5 hidden md:flex">
                         <div>
                             <img class="w-16 h-16 mb-2 rounded-full object-cover border-2 border-[#ff00e5] shadow-xl"
                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzHQv_th9wq3ivQ1CVk7UZRxhbPq64oQrg5Q&usqp=CAU"

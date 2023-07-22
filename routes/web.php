@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\SignupController;
+use App\Http\Controllers\Landing\HomeController;
+use App\Http\Controllers\Landing\PostController;
+use App\Http\Controllers\TestUploadImageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -31,9 +34,7 @@ Route::controller(SignupController::class)->group(function () {
     Route::post('/signup/post', 'create')->name('signup.post');
 });
 
-Route::get('/', function () {
-    return view('landing.index');
-})->middleware('auth');
+Route::get('/', [HomeController::class, 'index'])->middleware('auth');
 
 Route::get('/explore', function () {
     return view('landing.explore');
@@ -71,6 +72,20 @@ Route::get('/your-activity/interaction/comments', function () {
     return view('landing.your-activity.interactions.comments');
 })->middleware('auth');
 
+Route::get('/your-activity/interaction/story', function () {
+    return view('landing.your-activity.interactions.story');
+})->middleware('auth');
+
 Route::get('/profile/post', function () {
     return view('landing.profile.post');
 })->middleware('auth');
+
+Route::controller(TestUploadImageController::class)->group(function () {
+    Route::get('/rendy/pacarnya/ponyo', 'index')->name('post.index');
+    Route::post('/post/store', 'post')->name('post');
+});
+
+Route::controller(PostController::class)->group(function () {
+    Route::post('/store/image', 'storeImage')->name('store.image');
+    Route::post('/store/caption', 'storeCaption')->name('store.caption');
+});

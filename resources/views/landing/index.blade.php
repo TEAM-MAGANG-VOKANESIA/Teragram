@@ -31,6 +31,7 @@
                         <li class="hover:bg-gray-200 rounded-xl"><a>Setting</a></li>
                         <li class="hover:bg-gray-200 rounded-xl"><a>Your activity</a></li>
                         <li class="hover:bg-gray-200 rounded-xl"><a>Report a problem</a></li>
+                        <li class="hover:bg-gray-200 rounded-xl" onclick="my_modal_1.showModal()"><a>Create New Post</a></li>
                     </ul>
                 </details>
             </div>

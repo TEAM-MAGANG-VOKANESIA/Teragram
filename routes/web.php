@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\SignupController;
+use App\Http\Controllers\Landing\HomeController;
 use App\Http\Controllers\Landing\PostController;
 use App\Http\Controllers\TestUploadImageController;
 use Illuminate\Support\Facades\Auth;
@@ -33,9 +34,7 @@ Route::controller(SignupController::class)->group(function () {
     Route::post('/signup/post', 'create')->name('signup.post');
 });
 
-Route::get('/', function () {
-    return view('landing.index');
-})->middleware('auth');
+Route::get('/', [HomeController::class, 'index'])->middleware('auth');
 
 Route::get('/explore', function () {
     return view('landing.explore');

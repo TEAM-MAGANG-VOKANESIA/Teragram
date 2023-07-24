@@ -212,7 +212,7 @@
             });
         </script>
     </dialog>
-    <dialog id="my_modal_2" class="modal px-20 overflow-y-auto">
+    <dialog id="my_modal_2" class="modal md:px-10 px-7 py-5 w-full overflow-y-auto">
         <form method="post" action="{{ route('store.caption') }}"
             class="rounded-xl bg-white flex flex-col items-center">
             @csrf
@@ -230,7 +230,7 @@
                 </div>
             </div>
             <div class="md:flex">
-                <div class="md:w-1/2" id="postImage"></div>
+                <div class="" id="postImage"></div>
                 <div id="postId"></div>
                 <div class="md:w-1/2 py-3 px-3">
                     <div class="items-center space-x-4 mb-5 hidden md:flex">

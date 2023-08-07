@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\V1\Auth\LoginController;
+use App\Http\Controllers\API\V1\HomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,4 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::controller(LoginController::class)->prefix('/v1')->group(function () {
     Route::post('/login/store', 'store')->name('login.store.api.index');
+});
+
+Route::controller(HomeController::class)->prefix('/v1')->group(function () {
+    Route::get('/home', 'index')->name('home.api.index');
 });

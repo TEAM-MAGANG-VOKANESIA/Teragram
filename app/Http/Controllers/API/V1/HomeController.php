@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $posts = Post::latest('id')->get();
+        $posts = Post::with('user')->latest('id')->get();
         return response()->json($posts);
     }
 }

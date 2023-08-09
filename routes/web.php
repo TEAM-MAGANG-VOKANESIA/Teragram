@@ -29,12 +29,16 @@ Route::get('/logout', function () {
     return redirect('/login');
 });
 
+Route::get('/', function () {
+    return "Under Develop";
+});
+
 Route::controller(SignupController::class)->group(function () {
     Route::get('/signup', 'index')->name('signup.index');
     Route::post('/signup/post', 'create')->name('signup.post');
 });
 
-Route::get('/', [HomeController::class, 'index'])->middleware('auth');
+// Route::get('/', [HomeController::class, 'index'])->middleware('auth');
 
 Route::get('/explore', function () {
     return view('landing.explore');

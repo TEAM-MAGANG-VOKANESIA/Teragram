@@ -109,7 +109,7 @@
                         </div>
                         <div>
                             <img class="rounded-xl mb-3 object-cover mx-auto"
-                                src="{{asset("storage/post/$post->image")}}"
+                                src="{{asset("$post->image")}}"
                                 alt="">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center space-x-2">

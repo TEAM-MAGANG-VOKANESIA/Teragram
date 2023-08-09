@@ -4,27 +4,25 @@ namespace App\Http\Controllers\Landing;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
-use Deployer\Component\PharUpdate\Update;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
     public function storeImage(Request $request)
     {
+        dd($request);
         if ($request->hasFile('file')) {
-            $file = $request->file('file');
-            $imageName = time() . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('post', $imageName, 'public');
+            $imagePath = $request->file('image')->store('post', 'public');
 
             $post = new Post([
                 'user_id' => auth()->id(),
-                'image' => $imageName,
+                'image' => $imagePath,
             ]);
             $post->save();
 
             return response()->json([
                 'success' => true,
-                'image' => $imageName,
+                'image' => $imagePath,
                 'postId' => $post->id,
             ]);
         } else {

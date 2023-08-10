@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\V1\Auth\LoginController;
+use App\Http\Controllers\API\V1\Auth\RegisterController;
 use App\Http\Controllers\API\V1\HomeController;
 use App\Http\Controllers\API\V1\PostController;
 use Illuminate\Http\Request;
@@ -22,13 +23,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::controller(LoginController::class)->prefix('/v1')->group(function () {
-    Route::post('/login/store', 'store')->name('login.store.api.index');
+    Route::post('/login/store', 'store')->name('login.store.api');
+});
+
+Route::controller(RegisterController::class)->prefix('/v1')->group(function () {
+    Route::post('/register/store', 'store')->name('register.store.api');
 });
 
 Route::controller(HomeController::class)->prefix('/v1')->group(function () {
-    Route::get('/home', 'index')->name('home.api.index');
+    Route::get('/home', 'index')->name('home.api');
 });
 
 Route::controller(PostController::class)->prefix('/v1')->middleware('auth:sanctum')->group(function () {
-    Route::post('/upload/post', 'store')->name('upload.api.store');
+    Route::post('/upload/post', 'store')->name('upload.store.api');
 });

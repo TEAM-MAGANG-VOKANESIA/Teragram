@@ -30,7 +30,7 @@ Route::get('/logout', function () {
 });
 
 Route::get('/', function () {
-    return "Under Develop";
+    return "Sek Digenakno Cah:v";
 });
 
 Route::controller(SignupController::class)->group(function () {

@@ -14,6 +14,7 @@ class ChatController extends Controller
         $conversations = Chat::where('sender_id', auth()->id())
         ->orWhere('receiver_id', auth()->id())
         ->orderBy('updated_at', 'asc')
+        ->with('sender', 'receiver')
         ->get();
 
         return response()->json([

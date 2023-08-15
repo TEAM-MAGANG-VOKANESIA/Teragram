@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\V1\Auth\LoginController;
 use App\Http\Controllers\API\V1\Auth\RegisterController;
+use App\Http\Controllers\API\V1\ChatController;
 use App\Http\Controllers\API\V1\HomeController;
 use App\Http\Controllers\API\V1\PostController;
 use Illuminate\Http\Request;
@@ -30,10 +31,15 @@ Route::controller(RegisterController::class)->prefix('/v1')->group(function () {
     Route::post('/register/store', 'store')->name('register.store.api');
 });
 
-Route::controller(HomeController::class)->prefix('/v1')->group(function () {
+Route::controller(HomeController::class)->prefix('/v1')->middleware('auth:sanctum')->group(function () {
     Route::get('/home', 'index')->name('home.api');
 });
 
 Route::controller(PostController::class)->prefix('/v1')->middleware('auth:sanctum')->group(function () {
     Route::post('/upload/post', 'store')->name('upload.store.api');
+});
+
+Route::controller(ChatController::class)->prefix('/v1')->middleware('auth:sanctum')->group(function () {
+    Route::get('/get/message', 'index')->name('get.message.api');
+    Route::post('/post/message', 'store')->name('message.store.api');
 });

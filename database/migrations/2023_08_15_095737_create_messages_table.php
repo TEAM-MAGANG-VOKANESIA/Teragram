@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('roomchat_id');
             $table->unsignedBigInteger('user_id');
-            $table->text('content');
+            $table->text('message');
             $table->timestamps();
 
             $table->foreign('roomchat_id')->references('id')->on('roomchats')->onDelete('cascade');

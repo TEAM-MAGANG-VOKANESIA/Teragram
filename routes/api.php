@@ -41,5 +41,6 @@ Route::controller(PostController::class)->prefix('/v1')->middleware('auth:sanctu
 
 Route::controller(ChatController::class)->prefix('/v1')->middleware('auth:sanctum')->group(function () {
     Route::get('/get/message', 'index')->name('get.message.api');
+    Route::get('/get/message/{id}', 'show')->name('get.single.message.api');
     Route::post('/post/message', 'store')->name('message.store.api');
 });

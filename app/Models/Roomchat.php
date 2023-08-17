@@ -21,6 +21,11 @@ class Roomchat extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function lastMessage()
+    {
+        return $this->hasOne(Message::class)->latest('id');
+    }
+
     public function message()
     {
         return $this->hasMany(Message::class);

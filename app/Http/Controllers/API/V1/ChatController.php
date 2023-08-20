@@ -72,7 +72,7 @@ class ChatController extends Controller
 
     public function show(string $id)
     {
-        $roomchat = Roomchat::where('id', $id)->with(['message', 'message.user'])->first();
+        $roomchat = Roomchat::where('id', $id)->with(['message', 'message.user', 'user1', 'user2'])->first();
         
         if ($roomchat == null) {
             return response()->json([

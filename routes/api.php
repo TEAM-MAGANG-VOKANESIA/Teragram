@@ -43,4 +43,5 @@ Route::controller(ChatController::class)->prefix('/v1')->middleware('auth:sanctu
     Route::get('/get/message', 'index')->name('get.message.api');
     Route::get('/get/single/message/{id}', 'show')->name('get.single.message.api');
     Route::post('/post/message', 'store')->name('message.store.api');
+    Route::post('/search/user', 'searchUser')->name('message.search.api');
 });

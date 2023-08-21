@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\V1;
 use App\Http\Controllers\Controller;
 use App\Models\Message;
 use App\Models\Roomchat;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -103,6 +104,26 @@ class ChatController extends Controller
         return response()->json([
             'success' => false,
             'message' => 'You do not have permission to view this conversation',
+        ]);
+    }
+
+    public function searchUser(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'searchValue' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors(),
+            ]);
+        }
+
+        $results = User::where('name', 'like', '%' . $request->searchValue . '%')->get();
+        return response()->json([
+            'success' => true,
+            'results' => $results,
         ]);
     }
 

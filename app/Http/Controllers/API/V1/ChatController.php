@@ -120,7 +120,7 @@ class ChatController extends Controller
             ]);
         }
 
-        $results = User::where('name', 'like', '%' . $request->searchValue . '%')->get();
+        $results = User::where('name', 'like', '%' . $request->searchValue . '%')->where('id', '!=', auth()->id())->get();
         return response()->json([
             'success' => true,
             'results' => $results,

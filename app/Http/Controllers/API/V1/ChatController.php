@@ -71,39 +71,6 @@ class ChatController extends Controller
         ]);
     }
 
-    public function createRoomChat(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'user1_id' => 'required',
-            'user2_id' => 'required',
-            'message' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'errors' => $validator->errors(),
-            ]);
-        }
-
-        $roomchat = Roomchat::create([
-            'user1_id' => auth()->id(),
-            'user2_id' => $request->user2_id,
-        ]);
-
-        $message = Message::create([
-            'roomchat_id' => $roomchat->id,
-            'user_id' => auth()->id(),
-            'message' => $request->message,
-        ]);
-
-        return response()->json([
-            'success' => true,
-            'roomchat' => $roomchat,
-            'message' => $message
-        ]);
-    }
-
     public function show(string $id)
     {
         $roomchat = Roomchat::where('id', $id)->with(['message', 'message.user', 'user1', 'user2'])->first();

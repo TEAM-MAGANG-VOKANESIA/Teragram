@@ -82,12 +82,21 @@ class ChatController extends Controller
         }
 
         if ($roomchat->user1_id == auth()->id() || $roomchat->user2_id == auth()->id()) {
-            $id = auth()->id();
-            return response()->json([
-                'success' => true,
-                'myId' => $id,
-                'chats' => $roomchat,
-            ]);
+            if ($roomchat->user1_id == auth()->id()) {
+                $interlocutor = $roomchat->user2;
+                return response()->json([
+                    'success' => true,
+                    'interlocutor' => $interlocutor,
+                    'chats' => $roomchat,
+                ]);
+            } else {
+                $interlocutor = $roomchat->user1;
+                return response()->json([
+                    'success' => true,
+                    'interlocutor' => $interlocutor,
+                    'chats' => $roomchat
+                ]);
+            }
         }
 
         return response()->json([

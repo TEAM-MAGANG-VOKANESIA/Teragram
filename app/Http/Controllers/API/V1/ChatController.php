@@ -20,6 +20,7 @@ class ChatController extends Controller
 
         return response()->json([
             'success' => true,
+            'userId' => auth()->id(),
             'chats' => $chats,
         ]);
     }

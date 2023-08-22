@@ -16,8 +16,10 @@ class ChatController extends Controller
         $chats = Roomchat::where('user1_id', auth()->id())
             ->orWhere('user2_id', auth()->id())
             ->with(['user1', 'user2', 'lastMessage'])
-            ->latest('id')
-            ->get();
+            ->get()
+            ->sortByDesc(function($roomchat) {
+                return optional($roomchat->lastMessage)->id;
+            });
 
         return response()->json([
             'success' => true,

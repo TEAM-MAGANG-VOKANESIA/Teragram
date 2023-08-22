@@ -12,7 +12,6 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'user_id' => 'required|integer',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif',
             'caption' => 'string',
         ]);
@@ -27,7 +26,7 @@ class PostController extends Controller
         $imagePath = $request->file('image')->store('post', 'public');
 
         $data = Post::create([
-            'user_id' => $request->user_id,
+            'user_id' => auth()->id(),
             'image' => $imagePath,
             'caption' => $request->caption
         ]);

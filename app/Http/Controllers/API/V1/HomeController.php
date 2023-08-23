@@ -9,7 +9,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $posts = Post::with('user')->withCount('comments')->latest('id')->paginate(10);
+        $posts = Post::with(['user', 'likes'])->withCount(['countComments', 'likes'])->latest('id')->paginate(10);
+        foreach ($posts as $post) {
+            $post->isLike = $post->likes->contains('user_id', auth()->id());
+        }
         return response()->json($posts);
     }
 }

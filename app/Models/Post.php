@@ -24,4 +24,14 @@ class Post extends Model
     {
         return $this->hasMany(Comment::class)->latest()->take(20);
     }
+
+    public function countComments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
 }

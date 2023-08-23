@@ -79,13 +79,6 @@ class PostController extends Controller
 
         $comment = Comment::where('post_id', $request->postId)->get();
 
-        if ($comment->isEmpty()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'comment not found',
-            ]);
-        }
-
         return response()->json([
             'success' => true,
             'comment' => $comment,

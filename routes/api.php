@@ -37,6 +37,7 @@ Route::controller(HomeController::class)->prefix('/v1')->middleware('auth:sanctu
 
 Route::controller(PostController::class)->prefix('/v1')->middleware('auth:sanctum')->group(function () {
     Route::post('/upload/post', 'store')->name('upload.store.api');
+    Route::post('/post/comment', 'storeComment')->name('store.comment.api');
 });
 
 Route::controller(ChatController::class)->prefix('/v1')->middleware('auth:sanctum')->group(function () {

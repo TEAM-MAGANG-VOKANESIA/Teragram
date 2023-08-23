@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $posts = Post::with('user')->latest('id')->paginate(10);
+        $posts = Post::with(['user', 'comments.user'])->latest('id')->paginate(10);
         return response()->json($posts);
     }
 }

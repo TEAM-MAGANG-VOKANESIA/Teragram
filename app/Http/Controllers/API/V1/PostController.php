@@ -63,4 +63,32 @@ class PostController extends Controller
             'message' => 'Success post comment'
         ]);
     }
+
+    public function showComment(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'postId' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors(),
+            ]);
+        }
+
+        $comment = Comment::where('post_id', $request->postId)->get();
+
+        if ($comment->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'comment not found',
+            ]);
+        }
+
+        return response()->json([
+            'success' => true,
+            'comment' => $comment,
+        ]);
+    }
 }

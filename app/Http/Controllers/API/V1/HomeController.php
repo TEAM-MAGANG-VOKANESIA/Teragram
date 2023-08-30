@@ -3,16 +3,20 @@
 namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
-use App\Models\Post;
+use App\Services\HomeService;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(HomeService $homeService)
     {
-        $posts = Post::with(['user', 'likes'])->withCount(['countComments', 'likes'])->latest('id')->paginate(10);
-        foreach ($posts as $post) {
-            $post->isLike = $post->likes->contains('user_id', auth()->id());
+        try {
+            $homeResponse = $homeService->index();
+            return response()->json($homeResponse);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'errors' => $e,
+            ]);
         }
-        return response()->json($posts);
     }
 }

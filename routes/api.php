@@ -5,6 +5,7 @@ use App\Http\Controllers\API\V1\Auth\RegisterController;
 use App\Http\Controllers\API\V1\ChatController;
 use App\Http\Controllers\API\V1\HomeController;
 use App\Http\Controllers\API\V1\PostController;
+use App\Http\Controllers\API\V1\StoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -36,15 +37,23 @@ Route::controller(HomeController::class)->prefix('/v1')->middleware('auth:sanctu
 });
 
 Route::controller(PostController::class)->prefix('/v1')->middleware('auth:sanctum')->group(function () {
-    Route::post('/upload/post', 'store')->name('upload.store.api');
+    Route::post('/upload/post', 'store')->name('post.store.api');
     Route::post('/post/comment', 'storeComment')->name('store.comment.api');
     Route::post('/show/comment', 'showComment')->name('show.comment.api');
     Route::post('/like/post', 'like')->name('like.post.api');
+    Route::post('/delete/post', 'deletePost')->name('post.delete.api');
 });
 
 Route::controller(ChatController::class)->prefix('/v1')->middleware('auth:sanctum')->group(function () {
     Route::get('/get/message', 'index')->name('get.message.api');
     Route::get('/get/single/message/{id}', 'show')->name('get.single.message.api');
     Route::post('/post/message', 'store')->name('message.store.api');
-    Route::post('/search/user', 'searchUser')->name('message.search.api');
+    Route::post('/search/user', 'searchUser')->name('user.search.api');
+});
+
+Route::controller(StoryController::class)->prefix('/v1')->middleware('auth:sanctum')->group(function () {
+    Route::get('/get/story', 'index')->name('get.story.api');
+    Route::post('/post/story', 'store')->name('post.story.api');
+    Route::get('/show/story/{id}', 'show')->name('show.story.api');
+    Route::post('/delete/story', 'destroy')->name('delete.story.api');
 });

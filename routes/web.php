@@ -31,7 +31,7 @@ Route::get('/logout', function () {
 
 Route::get('/', function () {
     return "Sek Digenakno Cah:v";
-});
+})->name('home.index');
 
 Route::controller(SignupController::class)->group(function () {
     Route::get('/signup', 'index')->name('signup.index');

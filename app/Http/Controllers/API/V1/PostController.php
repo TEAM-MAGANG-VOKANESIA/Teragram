@@ -3,120 +3,73 @@
 namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
-use App\Models\Comment;
-use App\Models\Like;
-use App\Models\Post;
+use App\Services\PostService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
-    public function store(Request $request)
+    public function store(Request $request, PostService $postService)
     {
-        $validator = Validator::make($request->all(), [
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif',
-        ]);
-
-        if ($validator->fails()) {
+        try {
+            $postResponse = $postService->store($request);
+            return response()->json($postResponse);
+        } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'errors' => $validator->errors(),
+                'errors' => $e,
             ]);
         }
-
-        $imagePath = $request->file('image')->store('post', 'public');
-
-        $data = Post::create([
-            'user_id' => auth()->id(),
-            'image' => $imagePath,
-            'caption' => $request->caption
-        ]);
-
-        return response()->json([
-            'success' => true,
-            'message' => 'berhasil upload postingan',
-            'data' => $data,
-        ]);
     }
 
-    public function storeComment(Request $request)
+    public function deletePost(Request $request, PostService $postService)
     {
-        $validator = Validator::make($request->all(), [
-            'postId' => 'required',
-            'comment' => 'required',
-        ]);
-
-        if ($validator->fails()) {
+        try {
+            $postResponse = $postService->deletePost($request);
+            return response()->json($postResponse);
+        } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'errors' => $validator->errors(),
+                'errors' => $e,
             ]);
         }
-
-        Comment::create([
-            'post_id' => $request->postId,
-            'user_id' => auth()->id(),
-            'comment' => $request->comment,
-        ]);
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Success post comment'
-        ]);
     }
 
-    public function showComment(Request $request)
+    public function storeComment(Request $request, PostService $postService)
     {
-        $validator = Validator::make($request->all(), [
-            'postId' => 'required',
-        ]);
-
-        if ($validator->fails()) {
+        try {
+            $postResponse = $postService->storeComment($request);
+            return response()->json($postResponse);
+        } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'errors' => $validator->errors(),
+                'errors' => $e,
             ]);
         }
-
-        $comment = Comment::where('post_id', $request->postId)->with('user')->get();
-
-        return response()->json([
-            'success' => true,
-            'comment' => $comment,
-        ]);
     }
 
-    public function like(Request $request)
+    public function showComment(Request $request, PostService $postService)
     {
-        $validator = Validator::make($request->all(), [
-            'postId' => 'required',
-        ]);
-
-        if ($validator->fails()) {
+        try {
+            $postResponse = $postService->showComment($request);
+            return response()->json($postResponse);
+        } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'errors' => $validator->errors(),
+                'errors' => $e,
             ]);
         }
+    }
 
-        $postLiked = Like::where('user_id', auth()->id())->where('post_id', $request->postId)->first();
-
-        if ($postLiked) {
-            $postLiked->delete();
+    public function like(Request $request, PostService $postService)
+    {
+        try {
+            $postResponse = $postService->like($request);
+            return response()->json($postResponse);
+        } catch (\Exception $e) {
             return response()->json([
-                'success' => true,
-                'message' => 'post unlike'
+                'success' => false,
+                'errors' => $e,
             ]);
         }
-
-        Like::create([
-            'post_id' => $request->postId,
-            'user_id' => auth()->id(),
-        ]);
-
-        return response()->json([
-            'success' => true,
-            'message' => 'post like',
-        ]);
     }
 }

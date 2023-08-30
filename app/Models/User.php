@@ -46,4 +46,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Message::class);
     }
+
+    public function story()
+    {
+        return $this->hasOne(Story::class)->latest();
+    }
+
+    public function stories()
+    {
+        return $this->hasMany(Story::class);
+    }
 }

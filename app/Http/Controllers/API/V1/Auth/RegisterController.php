@@ -3,37 +3,21 @@
 namespace App\Http\Controllers\API\V1\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Services\Authentication\RegisterService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
-    public function store(Request $request)
+    public function store(Request $request, RegisterService $registerService)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:150',
-            'email' => 'required|string|email|max:150|unique:users',
-            'password' => 'required|string|min:8',
-        ]);
-
-        if ($validator->fails()) {
+        try {
+            $registerResponse = $registerService->store($request);
+            return response()->json($registerResponse);
+        } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'error' => $validator->errors(),
+                'errors' => $e,
             ]);
         }
-
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        return response()->json([
-            'success' => true,
-            'message' => 'berhasil register',
-        ]);
     }
 }

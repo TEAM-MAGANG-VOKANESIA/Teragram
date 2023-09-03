@@ -15,7 +15,7 @@ class StoryService
     {
         try {
             $stories = User::with(['story' => function ($query) {
-                $query->select('user_id','text', 'image');
+                $query->select('user_id','text', 'image', 'id');
             }])->has('story')->get(['name', 'id']);
     
             return [

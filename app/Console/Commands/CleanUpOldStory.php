@@ -30,11 +30,12 @@ class CleanUpOldStory extends Command
     {
         $twentyHoursAgo = Carbon::now()->subHours(24);
 
-        $story = Story::where('created_at', '<', $twentyHoursAgo);
+        $stories = Story::where('created_at', '<', $twentyHoursAgo);
 
-        Storage::disk('public')->delete($story->image);
-        
-        $story->delete();
+        foreach ($stories as $story) {
+            Storage::disk('public')->delete($story->image);
+            $story->delete();
+        }
 
         $this->info('Old stories clean up successfull');
     }

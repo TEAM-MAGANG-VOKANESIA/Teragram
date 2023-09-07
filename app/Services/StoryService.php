@@ -93,18 +93,17 @@ class StoryService
     public function show(string $id)
     {
         try {
-            $stories = Story::where('user_id', $id)->with(['user' => function ($query) {
-                $query->select('id', 'name');
-            }])->get([
+            $user = User::where('id', $id)->first(['id', 'name']);
+            $stories = Story::where('user_id', $id)->get([
                 'id',
                 'image',
                 'text',
                 'created_at',
-                'user_id',
             ]);
     
             return [
                 'success' => true,
+                'userStory' => $user,
                 'stories' => $stories,
             ];
         } catch (\Exception $e) {

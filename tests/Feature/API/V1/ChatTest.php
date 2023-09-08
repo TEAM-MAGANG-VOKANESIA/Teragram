@@ -6,8 +6,10 @@ use App\Models\User;
 
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\assertDatabaseCount;
+use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\get;
 use function Pest\Laravel\post;
+use function Pest\Laravel\delete;
 
 it('can\'t access chat (unauthenticated', function () {
     get(route('get.message.api'))
@@ -46,7 +48,7 @@ it('can\'t access single chat (conversation not found)', function () {
         ->get(route('get.single.message.api', -1))
         ->assertJson([
             'success' => false,
-            'message' => 'Conversations not found'
+            'message' => 'Conversation not found'
         ]);
 });
 
@@ -115,4 +117,159 @@ it('can search user', function () {
         ->assertJson([
             'success' => true,
         ]);
+});
+
+it('can\'t edit message (unauthenticated)', function() {
+    post(route('edit.message.api'))
+        ->assertStatus(302)
+        ->assertRedirect('/login');
+});
+
+it('can\'t edit message (validation error)', function() {
+    $user = User::factory()->create();
+    actingAs($user)
+        ->post(route('edit.message.api'))
+        ->assertJson([
+            'success' => false,
+        ]);
+});
+
+it('can\'t edit message (roomchat not found)', function() {
+    $user = User::factory()->create();
+    $message = Message::factory()->create();
+    actingAs($user)
+        ->post(route('edit.message.api'), [
+            'roomchatId' => -1,
+            'messageId' => $message->id,
+            'newMessage' => 'Hai Bro!',
+        ])
+        ->assertJson([
+            'success' => false,
+            'message' => 'Roomchat not found',
+        ]);
+});
+
+it('can\'t edit message (not allowed to edit message in this conversation)', function() {
+    $user = User::factory()->create();
+    $roomchat = Roomchat::factory()->create();
+    $message = Message::factory()->create(['roomchat_id' => $roomchat->id]);
+    actingAs($user)
+        ->post(route('edit.message.api'), [
+            'roomchatId' => $roomchat->id,
+            'messageId' => $message->id,
+            'newMessage' => 'Hai Bro!',
+        ])
+        ->assertJson([
+            'success' => false,
+            'message' => 'You\'re not allowed to see this conversation',
+        ]);
+});
+
+it('can\'t edit message (message not found)', function() {
+    $user = User::factory()->create();
+    $roomchat = Roomchat::factory()->create(['user1_id' => $user->id]);
+    actingAs($user)
+        ->post(route('edit.message.api'), [
+            'roomchatId' => $roomchat->id,
+            'messageId' => -1,
+            'newMessage' => 'Hai Bro!',
+        ])
+        ->assertJson([
+            'success' => false,
+            'message' => 'Message not found',
+        ]);
+});
+
+it('can\'t edit message (not message owned)', function() {
+    $user = User::factory()->create();
+    $roomchat = Roomchat::factory()->create(['user1_id' => $user->id]);
+    $message = Message::factory()->create(['roomchat_id' => $roomchat->id]);
+    actingAs($user)
+        ->post(route('edit.message.api'), [
+            'roomchatId' => $roomchat->id,
+            'messageId' => $message->id,
+            'newMessage' => 'Hai Bro!',
+        ])
+        ->assertJson([
+            'success' => false,
+            'message' => 'Can\'t edit this message (not owned)',
+        ]);
+});
+
+it('can\'t edit message (message not from this roomchat)', function() {
+    $user = User::factory()->create();
+    $roomchat = Roomchat::factory()->create(['user1_id' => $user->id]);
+    $message = Message::factory()->create(['user_id' => $user->id]);
+    actingAs($user)
+        ->post(route('edit.message.api'), [
+            'roomchatId' => $roomchat->id,
+            'messageId' => $message->id,
+            'newMessage' => 'Hai Bro!',
+        ])
+        ->assertJson([
+            'success' => false,
+            'message' => 'Can\'t edit this message (this message not from this roomchat)',
+        ]);
+});
+
+it('can edit message', function() {
+    $user = User::factory()->create();
+    $roomchat = Roomchat::factory()->create(['user1_id' => $user->id]);
+    $message = Message::factory()->create(['user_id' => $user->id, 'roomchat_id' => $roomchat->id]);
+    $newMessage = 'Hai Bro!';
+    actingAs($user)
+        ->post(route('edit.message.api'), [
+            'roomchatId' => $roomchat->id,
+            'messageId' => $message->id,
+            'newMessage' => $newMessage,
+        ])
+        ->assertJson([
+            'success' => true,
+            'message' => 'Successfull edit message',
+        ]);
+    assertDatabaseHas(Message::class, [
+        'roomchat_id' => $roomchat->id,
+        'user_id' => $user->id,
+        'message' => $newMessage,
+    ]);
+});
+
+it('can\'t delete message (unauthenticated)', function() {
+    $message = Message::factory()->create();
+    delete(route('delete.message.api', $message->id))
+        ->assertStatus(302)
+        ->assertRedirect('/login');
+});
+
+it('can\'t delete message (message not found)', function() {
+    $user = User::factory()->create();
+    actingAs($user)
+        ->delete(route('delete.message.api', -1))
+        ->assertJson([
+            'success' => false,
+            'message' => 'Message not found',
+        ]);
+});
+
+it('can\'t delete message (not owned)', function() {
+    $user = User::factory()->create();
+    $message = Message::factory()->create();
+    actingAs($user)
+        ->delete(route('delete.message.api', $message->id))
+        ->assertJson([
+            'success' => false,
+            'message' => 'Can\'t delete message (not owned)',
+        ]);
+});
+
+it('can delete message', function() {
+    $user = User::factory()->create();
+    $message = Message::factory()->create(['user_id' => $user->id]);
+    actingAs($user)
+        ->delete(route('delete.message.api', $message->id))
+        ->assertJson([
+            'success' => true,
+            'message' => 'Successfull delete message',
+        ]);
+    assertDatabaseCount(Message::class, 0);
 });

@@ -49,6 +49,8 @@ Route::controller(ChatController::class)->prefix('/v1')->middleware('auth:sanctu
     Route::get('/get/single/message/{id}', 'show')->name('get.single.message.api');
     Route::post('/post/message', 'store')->name('message.store.api');
     Route::post('/search/user', 'searchUser')->name('user.search.api');
+    Route::post('/edit/message', 'editMessage')->name('edit.message.api');
+    Route::delete('/delete/message/{messageId}', 'deleteMessage')->name('delete.message.api');
 });
 
 Route::controller(StoryController::class)->prefix('/v1')->middleware('auth:sanctum')->group(function () {

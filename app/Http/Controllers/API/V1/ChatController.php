@@ -60,13 +60,29 @@ class ChatController extends Controller
         }
     }
 
-    public function update(Request $request, string $id)
+    public function editMessage(Request $request, ChatService $chatService)
     {
-        //
+        try {
+            $chatResponse = $chatService->editMessage($request);
+            return response()->json($chatResponse);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'errors' => $e,
+            ]);
+        }
     }
 
-    public function destroy(string $id)
+    public function deleteMessage(string $id, ChatService $chatService)
     {
-        //
+        try {
+            $chatResponse = $chatService->deleteMessage($id);
+            return response()->json($chatResponse);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'errors' => $e,
+            ]);
+        }
     }
 }

@@ -6,6 +6,7 @@ use App\Models\Message;
 use App\Models\Roomchat;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class ChatService
@@ -75,12 +76,31 @@ class ChatService
 
     public function show(string $id)
     {
-        $roomchat = Roomchat::where('id', $id)->with(['message', 'message.user', 'user1', 'user2'])->first();
+        $roomchat = Roomchat::where('id', $id)
+            ->with([
+                'message' => function($query) {
+                    $query->select('id', 'roomchat_id', 'user_id', 'message', 'updated_at');
+                },
+                'message.user' => function($query) {
+                    $query->select('id', 'name');
+                },
+                'user1' => function($query) {
+                    $query->select('id', 'name');
+                },
+                'user2' => function($query) {
+                    $query->select('id', 'name');
+                },
+            ])->first([
+                'id',
+                'user1_id',
+                'user2_id',
+                'created_at',
+            ]);
 
         if ($roomchat == null) {
             return [
                 'success' => false,
-                'message' => 'Conversations not found'
+                'message' => 'Conversation not found'
             ];
         }
 
@@ -128,13 +148,113 @@ class ChatService
         ];
     }
 
-    public function update(Request $request, string $id)
+    public function editMessage(Request $request)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $validator = Validator::make($request->all(), [
+                'roomchatId' => 'required',
+                'messageId' => 'required',
+                'newMessage' => 'required',
+            ]);
+    
+            if ($validator->fails()) {
+                return [
+                    'success' => false,
+                    'errors' => $validator->errors(),
+                ];
+            }
+    
+            $roomchat = Roomchat::where('id', $request->roomchatId)->first();
+            
+            if ($roomchat === null) {
+                return [
+                    'success' => false,
+                    'message' => 'Roomchat not found'
+                ];
+            }
+    
+            if ($roomchat->user1_id !== auth()->id() || $roomchat->user1_id !== auth()->id()) {
+                return [
+                    'success' => false,
+                    'message' => 'You\'re not allowed to see this conversation',
+                ];
+            }
+
+            $message = Message::where('id', $request->messageId)->first();
+    
+            if ($message === null) {
+                return [
+                    'success' => false,
+                    'message' => 'Message not found',
+                ];
+            }
+        
+            if ($message->user_id !== auth()->id()) {
+                return [
+                    'success' => false,
+                    'message' => 'Can\'t edit this message (not owned)',
+                ];
+            }
+            
+            if ($message->roomchat_id !== $roomchat->id) {
+                return [
+                    'success' => false,
+                    'message' => 'Can\'t edit this message (this message not from this roomchat)',
+                ];
+            }
+            
+            $message->update([
+                'message' => $request->newMessage,
+            ]);
+            DB::commit();
+        
+            return [
+                'success' => true,
+                'message' => 'Successfull edit message',
+            ];
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return [
+                'message' => 'Service error',
+                'errors' => $e,
+            ];
+        }
     }
 
-    public function destroy(string $id)
+    public function deleteMessage(string $messageId)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $message = Message::where('id', $messageId)->first();
+
+            if ($message === null) {
+                return [
+                    'success' => false,
+                    'message' => 'Message not found',
+                ];
+            }
+
+            if ($message->user_id !== auth()->id()) {
+                return [
+                    'success' => false,
+                    'message' => 'Can\'t delete message (not owned)',
+                ];
+            }
+
+            $message->delete();
+            DB::commit();
+
+            return [
+                'success' => true,
+                'message' => 'Successfull delete message',
+            ];
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return [
+                'message' => 'Service error',
+                'errors' => $e,
+            ];
+        }
     }
 }

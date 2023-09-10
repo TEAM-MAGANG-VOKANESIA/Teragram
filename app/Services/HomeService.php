@@ -3,17 +3,22 @@
 namespace App\Services;
 
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 
 class HomeService
 {
     public function index()
     {
         try {
-            $posts = Post::with(['user', 'likes'])->withCount(['countComments', 'likes'])->latest('id')->paginate(10);
-            foreach ($posts as $post) {
-                $post->isLike = $post->likes->contains('user_id', auth()->id());
-                $post->myPost = $post->user->id == auth()->id();
-            }
+            $userId = Auth::id();
+            $posts = Post::with(['user', 'likes'])
+                ->withCount(['countComments', 'likes'])
+                ->latest('id')
+                ->paginate(10);
+            $posts->each(function ($post) use ($userId) {
+                $post->isLiked = $post->likes->contains('user_id', $userId);
+                $post->isMyPost = $post->user->id == $userId;
+            });
             return [
                 'posts' => $posts,
             ];

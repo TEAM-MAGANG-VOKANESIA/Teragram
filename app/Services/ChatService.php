@@ -6,6 +6,8 @@ use App\Models\Message;
 use App\Models\Roomchat;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Benchmark;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
@@ -13,65 +15,94 @@ class ChatService
 {
     public function index()
     {
-        $chats = Roomchat::where('user1_id', auth()->id())
-            ->orWhere('user2_id', auth()->id())
+        try {
+            $userId = Auth::id();
+            $chats = Roomchat::where(function ($query) use ($userId) {
+                $query
+                    ->where('user1_id', $userId)
+                    ->orWhere('user2_id', $userId);
+            })
             ->with(['user1', 'user2', 'lastMessage'])
             ->get()
             ->sortByDesc(function($chats) {
                 return optional($chats->lastMessage)->id;
             })->values();
-
-        return [
-            'success' => true,
-            'userId' => auth()->id(),
-            'chats' => $chats,
-        ];
+            return [
+                'success' => true,
+                'userId' => $userId,
+                'chats' => $chats,
+            ];
+        } catch (\Exception $e) {
+            return [
+                'message' => 'Service error',
+                'errors' => $e,
+            ];
+        }
     }
 
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'user2_id' => 'required',
-            'message' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return [
-                'success' => false,
-                'errors' => $validator->errors(),
-            ];
-        }
-
-        $checkRoomchat = Roomchat::where([['user1_id', auth()->id()], ['user2_id', $request->user2_id]])->orWhere([['user1_id', $request->user2_id], ['user2_id', auth()->id()]])->first();
-
-        if ($checkRoomchat == null) {
-            $roomchat = Roomchat::create([
-                'user1_id' => auth()->id(),
-                'user2_id' => $request->user2_id,
+        DB::beginTransaction();
+        try {
+            $validator = Validator::make($request->all(), [
+                'user2_id' => 'required',
+                'message' => 'required',
             ]);
+    
+            if ($validator->fails()) {
+                return [
+                    'success' => false,
+                    'errors' => $validator->errors(),
+                ];
+            }
 
+            $checkRoomchat = Roomchat::where(function ($query) use ($request) {
+                $query
+                    ->where('user1_id', auth()->id())
+                    ->where('user2_id', $request->user2_id)
+                    ->orWhere('user1_id', $request->user2_id)
+                    ->where('user2_id', auth()->id());
+            })->first();
+    
+            if ($checkRoomchat == null) {
+                $roomchat = Roomchat::create([
+                    'user1_id' => auth()->id(),
+                    'user2_id' => $request->user2_id,
+                ]);
+    
+                $message = Message::create([
+                    'roomchat_id' => $roomchat->id,
+                    'user_id' => auth()->id(),
+                    'message' => $request->message,
+                ]);
+
+                DB::commit();
+
+                return [
+                    'success' => true,
+                    'message' => $message,
+                ];
+            }
+    
             $message = Message::create([
-                'roomchat_id' => $roomchat->id,
+                'roomchat_id' => $checkRoomchat->id,
                 'user_id' => auth()->id(),
                 'message' => $request->message,
             ]);
 
+            DB::commit();
+    
             return [
                 'success' => true,
                 'message' => $message,
             ];
+        } catch (\Exception $e) {
+            DB::rollback();
+            return [
+                'message' => 'Service error',
+                'errors' => $e,
+            ];
         }
-
-        $message = Message::create([
-            'roomchat_id' => $checkRoomchat->id,
-            'user_id' => auth()->id(),
-            'message' => $request->message,
-        ]);
-
-        return [
-            'success' => true,
-            'message' => $message,
-        ];
     }
 
     public function show(string $id)

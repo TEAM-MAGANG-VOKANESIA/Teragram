@@ -5,6 +5,7 @@ use App\Http\Controllers\API\V1\Auth\RegisterController;
 use App\Http\Controllers\API\V1\ChatController;
 use App\Http\Controllers\API\V1\HomeController;
 use App\Http\Controllers\API\V1\PostController;
+use App\Http\Controllers\API\V1\SearchController;
 use App\Http\Controllers\API\V1\StoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -58,4 +59,11 @@ Route::controller(StoryController::class)->prefix('/v1')->middleware('auth:sanct
     Route::post('/post/story', 'store')->name('post.story.api');
     Route::get('/show/story/{id}', 'show')->name('show.story.api');
     Route::post('/delete/story', 'destroy')->name('delete.story.api');
+});
+
+Route::controller(SearchController::class)->prefix('/v1')->middleware('auth:sanctum')->group(function () {
+    Route::get('/get/search', 'index')->name('search.index.api');
+    Route::get('/most/popular', 'mostPopular')->name('search.most.popular.api');
+    Route::get('/most/like', 'mostLike')->name('search.most.like.api');
+    Route::get('/most/comment', 'mostComment')->name('search.most.comment.api');
 });

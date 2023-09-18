@@ -34,4 +34,9 @@ class Post extends Model
     {
         return $this->hasMany(Like::class);
     }
+
+    public function totalLikesComments()
+    {
+        return $this->countComments()->count() + $this->likes()->count();
+    }
 }

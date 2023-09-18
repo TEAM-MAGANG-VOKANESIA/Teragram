@@ -34,58 +34,37 @@ class StoryService
     {
         DB::beginTransaction();
         try {
-            if ($request->hasFile('image') && !$request->text) {
-                $imagePath = $request->file('image')->store('story', 'public');
-    
-                Story::create([
-                    'user_id' => auth()->id(),
-                    'image' => $imagePath,
-                ]);
+            $validator = Validator::make($request->all(), [
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif',
+            ]);
 
-                DB::commit();
-    
-                return [
-                    'success' => true,
-                    'message' => 'Successfull upload story',
-                ];
-            } elseif (!$request->hasFile('image') && $request->text) {
-                Story::create([
-                    'user_id' => auth()->id(),
-                    'text' => $request->text,
-                ]);
 
-                DB::commit();
-    
-                return [
-                    'success' => true,
-                    'message' => 'Successfull upload story',
-                ];
-            } elseif ($request->hasFile('image') && $request->text) {
-                $imagePath = $request->file('image')->store('story', 'public');
-                Story::create([
-                    'user_id' => auth()->id(),
-                    'image' => $imagePath,
-                    'text' => $request->text,
-                ]);
-
-                DB::commit();
-    
-                return [
-                    'success' => true,
-                    'message' => 'Successfull upload story',
-                ];
-            } else {
-                DB::rollBack();
+            if ($validator->fails()) {
                 return [
                     'success' => false,
-                    'message' => 'can\'t upload story, form emty',
+                    'errors' => $validator->errors(),
                 ];
-            }
+            }            
+
+            $imagePath = $request->file('image')->store('story', 'public');
+
+            Story::create([
+                'user_id' => auth()->id(),
+                'image' => $imagePath,
+                'text' => 'Story Image',
+            ]);
+
+            DB::commit();
+
+            return [
+                'success' => true,
+                'message' => 'Successfull upload story',
+            ];
         } catch (\Exception $e) {
             DB::rollBack();
             return [
                 'message' => 'Service error',
-                'errors' => $e,
+                'errors' => $e->getMessage(),
             ];
         }
     }

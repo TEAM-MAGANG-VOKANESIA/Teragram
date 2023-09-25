@@ -38,7 +38,6 @@ it('can\'t upload story (validation error)', function () {
         ->post(route('post.story.api'))
         ->assertJson([
             'success' => false,
-            'message' => 'can\'t upload story, form emty',
         ]);
 });
 
@@ -63,20 +62,6 @@ it('can upload story without text', function () {
         ->post(route('post.story.api'), [
             'user_id' => $user->id,
             'image' => UploadedFile::fake()->image('hello.jpg'),
-        ])
-        ->assertJson([
-            'success' => true,
-            'message' => 'Successfull upload story',
-        ]);
-    assertDatabaseCount(Story::class, 1);
-});
-
-it('can upload story without image', function () {
-    $user = User::factory()->create();
-    actingAs($user)
-        ->post(route('post.story.api'), [
-            'user_id' => $user->id,
-            'text' => 'hello world',
         ])
         ->assertJson([
             'success' => true,

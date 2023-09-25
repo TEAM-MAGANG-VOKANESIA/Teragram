@@ -7,6 +7,7 @@ use App\Models\User;
 
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\get;
+use function Pest\Laravel\post;
 
 it('it can\'t access search page (unauthenticated)', function () {
     get(route('search.index.api'))
@@ -101,5 +102,31 @@ it('it can access search page with most comment post data', function () {
                     ],
                 ],
             ],
+        ]);
+});
+
+it('it can\'t search (unauthenticated)', function() {
+    post(route('search.api'))
+        ->assertStatus(302)
+        ->assertRedirect('/login');
+});
+
+it('it can\'t search (validation error)', function() {
+    $user = User::factory()->create();
+    actingAs($user)
+        ->post(route('search.api'))
+        ->assertJson([
+            'success' => false,
+        ]);
+});
+
+it('it can search', function() {
+    $user = User::factory()->create();
+    actingAs($user)
+        ->post(route('search.api'), [
+            'searchValue' => 'Jamal',
+        ])
+        ->assertJson([
+            'success' => true,
         ]);
 });

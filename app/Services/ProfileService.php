@@ -26,8 +26,16 @@ class ProfileService
             )->with([
                 'posts' => function($query) {
                     $query->select('id', 'user_id', 'image');
-                }
-            ])->find(auth()->id());
+                },
+                'posts.likes' => function ($query) {
+                    $query->select('post_id');
+                },
+            ])
+            ->withCount('posts')
+            ->find(auth()->id());
+            foreach ($user->posts as $post) {
+                $user->totalLikes += $post->likes->count();
+            }
             return [
                 'success' => true,
                 'user' => $user,
@@ -36,7 +44,7 @@ class ProfileService
             return [
                 'success' => false,
                 'message' => 'Service Error',
-                'errors' => $e,
+                'errors' => $e->getMessage(),
             ];
         }
     }
@@ -57,8 +65,16 @@ class ProfileService
             )->with([
                 'posts' => function($query) {
                     $query->select('id', 'user_id', 'image');
-                }
-            ])->find($id);
+                },
+                'posts.likes' => function ($query) {
+                    $query->select('post_id');
+                },
+            ])
+            ->withCount('posts')
+            ->find($id);
+            foreach ($user->posts as $post) {
+                $user->totalLikes += $post->likes->count();
+            }
             return [
                 'success' => true,
                 'user' => $user,

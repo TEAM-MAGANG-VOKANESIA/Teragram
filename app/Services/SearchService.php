@@ -101,13 +101,13 @@ class SearchService
                 ];
             }
     
-            $user = User::where('name', 'like', '%' . $request->searchValue . '%')->get();
-            $post = Post::where('caption', 'like', '%' . $request->searchValue . '%')->get();
+            $user = User::where('name', 'like', '%' . $request->searchValue . '%')->get(['id', 'name', 'email', 'profile_image']);
+            $post = Post::where('caption', 'like', '%' . $request->searchValue . '%')->get(['id', 'image', 'caption']);
             return [
                 'success' => true,
                 'data' => [
-                    $user,
-                    $post,
+                    'users' => $user,
+                    'posts' => $post,
                 ],
             ];
         } catch (\Exception $e) {

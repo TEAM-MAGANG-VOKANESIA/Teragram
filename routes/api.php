@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\V1\Auth\LoginController;
 use App\Http\Controllers\API\V1\Auth\RegisterController;
 use App\Http\Controllers\API\V1\ChatController;
+use App\Http\Controllers\API\V1\FollowController;
 use App\Http\Controllers\API\V1\HomeController;
 use App\Http\Controllers\API\V1\PostController;
 use App\Http\Controllers\API\V1\ProfileController;
@@ -67,6 +68,7 @@ Route::controller(SearchController::class)->prefix('/v1')->middleware('auth:sanc
     Route::get('/most/popular', 'mostPopular')->name('search.most.popular.api');
     Route::get('/most/like', 'mostLike')->name('search.most.like.api');
     Route::get('/most/comment', 'mostComment')->name('search.most.comment.api');
+    Route::post('/search', 'search')->name('search.api');
 });
 
 Route::controller(ProfileController::class)->prefix('/v1')->middleware('auth:sanctum')->group(function () {
@@ -74,4 +76,9 @@ Route::controller(ProfileController::class)->prefix('/v1')->middleware('auth:san
     Route::get('/profile/{id}', 'show')->name('profile.api');
     Route::post('/update/profile', 'update')->name('update.profile.api');
     Route::delete('/delete/user/profile/{id}', 'destroy')->name('delete.user.profile.api');
+});
+
+Route::controller(FollowController::class)->prefix('/v1')->middleware('auth:sanctum')->group(function () {
+    Route::get('/follow/{userId}', 'followUser')->name('follow.user.api');
+    Route::get('/unfollow/{userId}', 'unfollowUser')->name('unfollow.user.api');
 });

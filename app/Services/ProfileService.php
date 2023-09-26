@@ -10,9 +10,6 @@ use Illuminate\Support\Facades\Validator;
 
 class ProfileService
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function myProfile()
     {
         try {
@@ -24,15 +21,15 @@ class ProfileService
                 'about',
                 'city'
             )->with([
-                'posts' => function($query) {
+                'posts' => function ($query) {
                     $query->select('id', 'user_id', 'image');
                 },
                 'posts.likes' => function ($query) {
                     $query->select('post_id');
                 },
             ])
-            ->withCount('posts')
-            ->find(auth()->id());
+                ->withCount('posts', 'followers')
+                ->find(auth()->id());
             foreach ($user->posts as $post) {
                 $user->totalLikes += $post->likes->count();
             }
@@ -49,9 +46,6 @@ class ProfileService
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show($id)
     {
         try {
@@ -63,15 +57,15 @@ class ProfileService
                 'about',
                 'city'
             )->with([
-                'posts' => function($query) {
+                'posts' => function ($query) {
                     $query->select('id', 'user_id', 'image');
                 },
                 'posts.likes' => function ($query) {
                     $query->select('post_id');
                 },
             ])
-            ->withCount('posts')
-            ->find($id);
+                ->withCount('posts', 'followers')
+                ->find($id);
             foreach ($user->posts as $post) {
                 $user->totalLikes += $post->likes->count();
             }
@@ -88,9 +82,6 @@ class ProfileService
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request)
     {
         try {
@@ -126,9 +117,6 @@ class ProfileService
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         DB::beginTransaction();

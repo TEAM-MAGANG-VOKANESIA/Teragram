@@ -13,4 +13,18 @@ class Follow extends Model
         'user_id',
         'followed_user_id',
     ];
+
+    public function friends()
+    {
+        return $this->belongsToMany(User::class, 'user_id', 'followed_user_id');
+    }
+
+    public function user1()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+    public function user2()
+    {
+        return $this->belongsTo(User::class, 'followed_user_id');
+    }
 }

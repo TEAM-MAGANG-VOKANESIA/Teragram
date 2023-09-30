@@ -21,18 +21,26 @@ class ProfileService
                 'about',
                 'city'
             )->with([
-                'posts' => function ($query) {
-                    $query->select('id', 'user_id', 'image');
-                },
-                'posts.likes' => function ($query) {
-                    $query->select('post_id');
-                },
+                'posts:id,user_id,image',
+                'posts.likes:post_id',
+                'followings.followings:id',
+                'followings:id,name,profile_image',
+                'followers:id',
             ])
                 ->withCount('posts', 'followers')
                 ->find(auth()->id());
-            foreach ($user->posts as $post) {
-                $user->totalLikes += $post->likes->count();
-            }
+            $user->totalLikes = $user->posts->sum(function ($post) {
+                return $post->likes->count();
+            });
+            $user->friends = $user->followings->filter(function ($followingUser) use ($user) {
+                return $followingUser->followings->contains($user->id);
+            })->map(function ($followingUser) {
+                return [
+                    'id' => $followingUser->id,
+                    'name' => $followingUser->name,
+                    'image' => $followingUser->profile_image
+                ];
+            });
             return [
                 'success' => true,
                 'user' => $user,
@@ -57,18 +65,26 @@ class ProfileService
                 'about',
                 'city'
             )->with([
-                'posts' => function ($query) {
-                    $query->select('id', 'user_id', 'image');
-                },
-                'posts.likes' => function ($query) {
-                    $query->select('post_id');
-                },
+                'posts:id,user_id,image',
+                'posts.likes:post_id',
+                'followings.followings:id',
+                'followings:id,name,profile_image',
+                'followers:id',
             ])
                 ->withCount('posts', 'followers')
                 ->find($id);
-            foreach ($user->posts as $post) {
-                $user->totalLikes += $post->likes->count();
-            }
+                $user->totalLikes = $user->posts->sum(function ($post) {
+                    return $post->likes->count();
+                });
+                $user->friends = $user->followings->filter(function ($followingUser) use ($user) {
+                    return $followingUser->followings->contains($user->id);
+                })->map(function ($followingUser) {
+                    return [
+                        'id' => $followingUser->id,
+                        'name' => $followingUser->name,
+                        'image' => $followingUser->profile_image
+                    ];
+                });
             return [
                 'success' => true,
                 'user' => $user,
@@ -102,7 +118,7 @@ class ProfileService
 
             $validated = $validator->validated();
 
-            $user->update($validated);
+            // $user->update($validated);
 
             return [
                 'success' => true,

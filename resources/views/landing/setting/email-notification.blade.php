@@ -5,7 +5,7 @@
                 <div class="p-4 w-full h-full">
                     <div class="border-b-2">
                         <div class="mb-4">
-                            <p class="font-bold text-xl mt-3 my-6 ml-5">Feedback emails</p>
+                            <p class="font-bold text-xl mt-3 my-6 ml-5">Feedback mails</p>
                             <div class="flex items-center  mt-3 my-6 ml-6 ">
                                 <div
                                     class="bg-white dark:bg-gray-100 rounded-full w-5 h-5 flex flex-shrink-0 justify-center items-center relative">

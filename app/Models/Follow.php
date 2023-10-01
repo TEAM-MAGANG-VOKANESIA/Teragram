@@ -14,17 +14,13 @@ class Follow extends Model
         'followed_user_id',
     ];
 
-    public function friends()
+    public function user()
     {
-        return $this->belongsToMany(User::class, 'user_id', 'followed_user_id');
+        $this->belongsTo(User::class);
     }
 
-    public function user1()
+    public function followedUser()
     {
-        return $this->belongsTo(User::class, 'user_id');
-    }
-    public function user2()
-    {
-        return $this->belongsTo(User::class, 'followed_user_id');
+        $this->belongsTo(User::class, 'followed_user_id');
     }
 }

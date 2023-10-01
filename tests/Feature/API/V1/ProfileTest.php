@@ -31,6 +31,16 @@ it('it can\'t access profile (unauthenticated)', function () {
         ->assertRedirect('/login');
 });
 
+it('it can\'t access profile (user not found)', function () {
+    $user = User::factory()->create();
+    actingAs($user)
+        ->get(route('profile.api', -1))
+        ->assertJson([
+            'success' => false,
+            'message' => 'User not found',
+        ]);
+});
+
 it('it can access profile', function () {
     $user = User::factory()->create();
     $someone = User::factory()->create();

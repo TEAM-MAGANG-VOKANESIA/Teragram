@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Models\Follow;
+use App\Models\Like;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,24 +16,14 @@ class ProfileService
     {
         try {
             $user = User::with([
-                'posts',
-                'posts.likes',
-                'followings.followings',
-                'followings',
-                'followers',
+                'posts:id,user_id,image',
+                'followers:id'
             ])->withCount('posts', 'followers')->find(auth()->id());
-            $totalLikes = $user->posts->sum(function ($post) {
-                return $post->likes->count();
-            });
-            $friends = $user->followings->filter(function ($followingUser) use ($user) {
-                return $followingUser->followings->contains($user->id);
-            })->map(function ($followingUser) {
-                return [
-                    'id' => $followingUser->id,
-                    'name' => $followingUser->name,
-                    'profile_image' => $followingUser->profile_image
-                ];
-            });
+            $posts = $user->posts->pluck('id');
+            $totalLikes = Like::whereIn('post_id', $posts)->count();
+            $followers = $user->followers->pluck('id');
+            $thisUserFollowingUs = Follow::whereIn('user_id', $followers)->where('followed_user_id', $user->id)->pluck('user_id');
+            $friends = User::whereIn('id', $thisUserFollowingUs)->get();
             return [
                 'success' => true,
                 'user' => [
@@ -46,6 +38,7 @@ class ProfileService
                     'total_followers' => $user->followers_count,
                 ],
                 'friends' => $friends,
+                'posts' => $user->posts,
             ];
         } catch (\Exception $e) {
             return [
@@ -60,39 +53,36 @@ class ProfileService
     {
         try {
             $user = User::with([
-                'posts',
-                'posts.likes',
-                'followings.followings',
-                'followings',
-                'followers',
+                'posts:id,user_id,image',
+                'followers:id',
             ])->withCount('posts', 'followers')->find($id);
-                $totalLikes = $user->posts->sum(function ($post) {
-                    return $post->likes->count();
-                });
-                $friends = $user->followings->filter(function ($followingUser) use ($user) {
-                    return $followingUser->followings->contains($user->id);
-                })->map(function ($followingUser) {
-                    return [
-                        'id' => $followingUser->id,
-                        'name' => $followingUser->name,
-                        'image' => $followingUser->profile_image
-                    ];
-                });
+            if (!$user) {
                 return [
-                    'success' => true,
-                    'user' => [
-                        'id' => $user->id,
-                        'name' => $user->name,
-                        'email' => $user->email,
-                        'profile_image' => $user->profile_image,
-                        'about' => $user->about,
-                        'city' => $user->city,
-                        'total_likes' => $totalLikes,
-                        'total_posts' => $user->posts_count,
-                        'total_followers' => $user->followers_count,
-                    ],
-                    'friends' => $friends,
+                    'success' => false,
+                    'message' => 'User not found',
                 ];
+            }
+            $posts = $user->posts->pluck('id');
+            $totalLikes = Like::whereIn('post_id', $posts)->count();
+            $followers = $user->followers->pluck('id');
+            $thisUserFollowingUs = Follow::whereIn('user_id', $followers)->where('followed_user_id', $user->id)->pluck('user_id');
+            $friends = User::whereIn('id', $thisUserFollowingUs)->get();
+            return [
+                'success' => true,
+                'user' => [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'profile_image' => $user->profile_image,
+                    'about' => $user->about,
+                    'city' => $user->city,
+                    'total_likes' => $totalLikes,
+                    'total_posts' => $user->posts_count,
+                    'total_followers' => $user->followers_count,
+                ],
+                'friends' => $friends,
+                'posts' => $user->posts,
+            ];
         } catch (\Exception $e) {
             return [
                 'success' => false,

@@ -13,37 +13,39 @@ class ProfileService
     public function myProfile()
     {
         try {
-            $user = User::select(
-                'id',
-                'name',
-                'email',
-                'profile_image',
-                'about',
-                'city'
-            )->with([
-                'posts:id,user_id,image',
-                'posts.likes:post_id',
-                'followings.followings:id',
-                'followings:id,name,profile_image',
-                'followers:id',
-            ])
-                ->withCount('posts', 'followers')
-                ->find(auth()->id());
-            $user->totalLikes = $user->posts->sum(function ($post) {
+            $user = User::with([
+                'posts',
+                'posts.likes',
+                'followings.followings',
+                'followings',
+                'followers',
+            ])->withCount('posts', 'followers')->find(auth()->id());
+            $totalLikes = $user->posts->sum(function ($post) {
                 return $post->likes->count();
             });
-            $user->friends = $user->followings->filter(function ($followingUser) use ($user) {
+            $friends = $user->followings->filter(function ($followingUser) use ($user) {
                 return $followingUser->followings->contains($user->id);
             })->map(function ($followingUser) {
                 return [
                     'id' => $followingUser->id,
                     'name' => $followingUser->name,
-                    'image' => $followingUser->profile_image
+                    'profile_image' => $followingUser->profile_image
                 ];
             });
             return [
                 'success' => true,
-                'user' => $user,
+                'user' => [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'profile_image' => $user->profile_image,
+                    'about' => $user->about,
+                    'city' => $user->city,
+                    'total_likes' => $totalLikes,
+                    'total_posts' => $user->posts_count,
+                    'total_followers' => $user->followers_count,
+                ],
+                'friends' => $friends,
             ];
         } catch (\Exception $e) {
             return [

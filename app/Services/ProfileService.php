@@ -17,13 +17,13 @@ class ProfileService
         try {
             $user = User::with([
                 'posts:id,user_id,image',
-                'followers:id'
-            ])->withCount('posts', 'followers')->find(auth()->id());
+                'followings:id',
+            ])->withCount('posts')->find(auth()->id());
             $posts = $user->posts->pluck('id');
             $totalLikes = Like::whereIn('post_id', $posts)->count();
-            $followers = $user->followers->pluck('id');
-            $thisUserFollowingUs = Follow::whereIn('user_id', $followers)->where('followed_user_id', $user->id)->pluck('user_id');
-            $friends = User::whereIn('id', $thisUserFollowingUs)->get();
+            $followings = $user->followings->pluck('id');
+            $thisUserFollowingUs = Follow::whereIn('user_id', $followings)->where('followed_user_id', $user->id)->pluck('user_id');
+            $friends = User::whereIn('id', $thisUserFollowingUs)->get(['id', 'name', 'profile_image']);
             return [
                 'success' => true,
                 'user' => [
@@ -35,7 +35,7 @@ class ProfileService
                     'city' => $user->city,
                     'total_likes' => $totalLikes,
                     'total_posts' => $user->posts_count,
-                    'total_followers' => $user->followers_count,
+                    'total_friends' => $friends->count(),
                 ],
                 'friends' => $friends,
                 'posts' => $user->posts,
@@ -54,8 +54,8 @@ class ProfileService
         try {
             $user = User::with([
                 'posts:id,user_id,image',
-                'followers:id',
-            ])->withCount('posts', 'followers')->find($id);
+                'followings:id',
+            ])->withCount('posts')->find($id);
             if (!$user) {
                 return [
                     'success' => false,
@@ -64,9 +64,9 @@ class ProfileService
             }
             $posts = $user->posts->pluck('id');
             $totalLikes = Like::whereIn('post_id', $posts)->count();
-            $followers = $user->followers->pluck('id');
-            $thisUserFollowingUs = Follow::whereIn('user_id', $followers)->where('followed_user_id', $user->id)->pluck('user_id');
-            $friends = User::whereIn('id', $thisUserFollowingUs)->get();
+            $followings = $user->followings->pluck('id');
+            $thisUserFollowingUs = Follow::whereIn('user_id', $followings)->where('followed_user_id', $user->id)->pluck('user_id');
+            $friends = User::whereIn('id', $thisUserFollowingUs)->get(['id', 'name', 'profile_image']);
             return [
                 'success' => true,
                 'user' => [
@@ -78,7 +78,7 @@ class ProfileService
                     'city' => $user->city,
                     'total_likes' => $totalLikes,
                     'total_posts' => $user->posts_count,
-                    'total_followers' => $user->followers_count,
+                    'total_friends' => $friends->count(),
                 ],
                 'friends' => $friends,
                 'posts' => $user->posts,
@@ -92,15 +92,33 @@ class ProfileService
         }
     }
 
-    public function update(Request $request)
+    public function updateIndex()
     {
         try {
             $user = Auth::user();
+
+            return [
+                'success' => true,
+                'user' => $user,
+            ];
+        } catch (\Exception $e) {
+            return [
+                'success' => false,
+                'message' => 'Service Error',
+                'errors' => $e,
+            ];
+        }
+    }
+
+    public function update(Request $request)
+    {
+        try {
             $validator = Validator::make($request->all(), [
-                'name' => 'string',
-                'email' => 'email|string',
+                'name' => 'required|string',
+                'email' => 'required|email|string',
                 'profileImage' => 'image|mimes:jpeg,png,jpg,gif',
                 'about' => 'max:150',
+                'city' => 'max:50',
             ]);
 
             if ($validator->fails()) {
@@ -109,10 +127,21 @@ class ProfileService
                     'errors' => $validator->errors(),
                 ];
             }
+            
+            $user = Auth::user();
 
-            $validated = $validator->validated();
-
-            $user->update($validated);
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'profile' => $request->profile,
+                'about' => $request->about,
+                'city' => $request->city,
+            ]);
+            // $user->name = $request->name;
+            // $user->email = $request->email;
+            // $user->profile_image = $request->profileImage;
+            // $user->about = $request->about;
+            // $user->city = $request->city;
 
             return [
                 'success' => true,
@@ -122,7 +151,7 @@ class ProfileService
             return [
                 'success' => false,
                 'message' => 'Service Error',
-                'errors' => $e,
+                'errors' => $e->getMessage(),
             ];
         }
     }

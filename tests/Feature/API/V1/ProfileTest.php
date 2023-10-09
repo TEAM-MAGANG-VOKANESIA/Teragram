@@ -52,6 +52,21 @@ it('it can access profile', function () {
         ]);
 });
 
+it('it can\'t update profile index (unauthenticated)', function () {
+    get(route('update.profile.index.api'))
+        ->assertStatus(302)
+        ->assertRedirect('/login');
+});
+
+it('it can update profile index', function () {
+    $user = User::factory()->create();
+    actingAs($user)
+        ->get(route('update.profile.index.api'))
+        ->assertJson([
+            'success' => true,
+        ]);
+});
+
 it('it can\'t update profile (unauthenticated)', function () {
     post(route('update.profile.api'))
         ->assertStatus(302)

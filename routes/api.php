@@ -10,6 +10,7 @@ use App\Http\Controllers\API\V1\ProfileController;
 use App\Http\Controllers\API\V1\SearchController;
 use App\Http\Controllers\API\V1\StoryController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -74,6 +75,7 @@ Route::controller(SearchController::class)->prefix('/v1')->middleware('auth:sanc
 Route::controller(ProfileController::class)->prefix('/v1')->middleware('auth:sanctum')->group(function () {
     Route::get('/my/profile', 'myProfile')->name('my.profile.api');
     Route::get('/profile/{id}', 'show')->name('profile.api');
+    Route::get('/update/profile/index', 'updateIndex')->name('update.profile.index.api');
     Route::post('/update/profile', 'update')->name('update.profile.api');
     Route::delete('/delete/user/profile/{id}', 'destroy')->name('delete.user.profile.api');
 });

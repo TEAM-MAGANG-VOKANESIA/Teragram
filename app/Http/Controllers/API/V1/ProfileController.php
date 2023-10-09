@@ -43,6 +43,22 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      */
+    public function updateIndex(ProfileService $profileService)
+    {
+        try {
+            $profileResponse = $profileService->updateIndex();
+            return response()->json($profileResponse);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'errors' => $e,
+            ]);
+        }
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
     public function update(Request $request, ProfileService $profileService)
     {
         try {

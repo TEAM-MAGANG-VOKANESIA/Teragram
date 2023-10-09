@@ -114,12 +114,8 @@ class ChatService
                 'message.user' => function($query) {
                     $query->select('id', 'name');
                 },
-                'user1' => function($query) {
-                    $query->select('id', 'name');
-                },
-                'user2' => function($query) {
-                    $query->select('id', 'name');
-                },
+                'user1:id,name,email,profile_image,about,city',
+                'user2:id,name,email,profile_image,about,city',
             ])->first([
                 'id',
                 'user1_id',
